@@ -3,29 +3,31 @@ import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../Nav/Nav'
 import Home from '../Home/Home'
+// index page will keep state and methods for all list items
+// clicking a list item will pass up the id to app, and back down to show
 import Index from '../Index/Index'
+// show page will keep state and methods for selected list's items field 
+// show page will use the id passed from app to find correct list
 import Show from '../Show/Show'
 import Form from '../Form/Form'
 import './App.css'
 
+//app will keep state and methods for login/signup/logout
 class App extends Component {
   state = {
     form: '',
     isLoggedIn: false,
     username: '',
     password: '',
-    lists: [],
     list: ''
   }
 
   componentDidMount = () => {
     if(localStorage.token) {
       axios.get('http://localhost:3001/user/verify/' + localStorage.token)
-      .then(response => axios.get('http://localhost:3001/list/' + response.data.username))
       .then(response => this.setState({
         isLoggedIn: true, 
         username: response.data.username, 
-        lists: response.data.lists
       }));
     } else {
       this.setState({isLoggedIn: false})
@@ -67,10 +69,10 @@ class App extends Component {
       localStorage.clear();
   }
 
-  toggleForm = (value) => {
-    //value must be "signup", "login", or ""
-    this.setState({form: value});
-  }
+  //type must be "signup", "login", or ""  
+  toggleForm = type => this.setState({form: type});
+
+  toggleList = id => this.setState({id: id});
 
   render () {
     return (
@@ -79,10 +81,10 @@ class App extends Component {
         {this.state.form && <Form type={this.state.form} username={this.state.username} password={this.state.password} handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn} toggleForm={this.toggleForm}/> }
         
         <Switch>
-          <Route path={'/:title'} render={()=> <Show/>}/>
+          <Route path={'/:title'} render={()=> <Show list={this.state.list}/>}/>
           <Route path={'/'} 
             render={this.state.isLoggedIn ?
-              ()=> <Index username={this.state.username} /> : 
+              ()=> <Index username={this.state.username} toggleList={this.toggleList}/> : 
               ()=> <Home toggleForm={this.toggleForm}/> 
             }
           />
