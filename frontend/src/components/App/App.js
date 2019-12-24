@@ -14,18 +14,22 @@ class App extends Component {
     isLoggedIn: false
   }
 
+  // componentDidMount = () => {
+  //   if(localStorage.token) {
+  //     const ca = localStorage.token;
+  //     const base64Url = ca.split('.')[1];
+  //     const decodedValue = JSON.parse(window.atob(base64Url)).id;
+  //     axios.get('http://localhost:3001/user/' + decodedValue)
+  //     .then(response => this.setState({username: response.data.username, isLoggedIn: true}))
+  //   } else {
+  //     this.setState({isLoggedIn: false})
+  //   }
+  // }
+
   componentDidMount = () => {
-    //retrieves payload id from token to find user by id; 
-    //then sets username prop and forces url change
     if(localStorage.token) {
-      const ca = localStorage.token;
-      const base64Url = ca.split('.')[1];
-      const decodedValue = JSON.parse(window.atob(base64Url)).id;
-      console.log(decodedValue)
-      axios.get('http://localhost:3001/user/' + decodedValue)
-      .then(response => {
-        this.setState({username: response.data.username, isLoggedIn: true});
-      }).then(console.log(this.state.username));
+      axios.get('http://localhost:3001/user/verify/' + localStorage.token)
+      .then(response => this.setState({username: response.data.username, isLoggedIn: true}))
     } else {
       this.setState({isLoggedIn: false})
     }

@@ -5,10 +5,13 @@ const jwt = require('jwt-simple');
 const config = require('../config/config.js');
 const User = require('../models/user.js');
 
-
-//Routes
-router.get('/:id', (req, res) => {
-    User.findById(req.params.id) 
+router.get('/verify/:token', (req, res) => {
+    const ca = req.params.token;
+    const base64Url = ca.split('.')[1];
+    const buff = new Buffer(base64Url, 'base64');
+    const text = buff.toString('ascii');
+    const payload = JSON.parse(text).id;
+    User.findById(payload) 
     .then(user => res.json({username: user.username}))
 })
 

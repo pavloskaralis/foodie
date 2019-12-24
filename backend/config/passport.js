@@ -13,6 +13,7 @@ const params = {
 }
 
 module.exports = function() {  
+    console.log('inside passport.js')
     const strategy = new Strategy(params, (payload, callback) => {
         const user = User.findById(payload.id) || null
         if (user) {
