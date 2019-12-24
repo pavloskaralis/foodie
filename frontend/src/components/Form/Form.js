@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './Index.css'
+import './Form.css'
 
-
-class Index extends Component {
+class Form extends Component {
     render () {
         return (
             <div>
-                Index
+                Form
             </div>
         )
     }
 }
 
-export default Index
+export default Form

@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './Index.css'
+import './IndexList.css'
 
 
-class Index extends Component {
+class IndexList extends Component {
     render () {
         return (
             <div>
-                Index
+                IndexList
             </div>
         )
     }
 }
 
-export default Index
+export default IndexList
