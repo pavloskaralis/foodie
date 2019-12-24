@@ -1,30 +1,20 @@
 import React, { Component } from 'react'
 import { Route, Switch} from 'react-router-dom'
 import axios from 'axios'
-import NavBar from '../NavBar/NavBar'
+import Nav from '../Nav/Nav'
 import Home from '../Home/Home'
 import Index from '../Index/Index'
 import Show from '../Show/Show'
+import Form from '../Form/Form'
 import './App.css'
 
 class App extends Component {
   state = {
     username: '',
     password: '',
-    isLoggedIn: false
+    isLoggedIn: false,
+    form: ''
   }
-
-  // componentDidMount = () => {
-  //   if(localStorage.token) {
-  //     const ca = localStorage.token;
-  //     const base64Url = ca.split('.')[1];
-  //     const decodedValue = JSON.parse(window.atob(base64Url)).id;
-  //     axios.get('http://localhost:3001/user/' + decodedValue)
-  //     .then(response => this.setState({username: response.data.username, isLoggedIn: true}))
-  //   } else {
-  //     this.setState({isLoggedIn: false})
-  //   }
-  // }
 
   componentDidMount = () => {
     if(localStorage.token) {
@@ -64,37 +54,37 @@ class App extends Component {
           username: '',
           password: '',
           title: '',
+          form: '',
           isLoggedIn: false
       });
       localStorage.clear();
   }
 
+  toggleForm = (value) => {
+    //value must be "signup", "login", or ""
+    this.setState({form: value});
+  }
+
   render () {
     return (
-        <div id="full-page-container">
-            <NavBar isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn} handleLogOut={this.handleLogOut}/>
-            
-            {/* test form; to be deleted */}
-            <form onSubmit={this.handleSignUp}>
-                <input type="text" value={this.state.username} onChange={this.handleInput} id="username"/>
-                <input type="text" value={this.state.password} onChange={this.handleInput} id="password"/>
-                <input type="submit" value="test"/>
-            </form>
+      <React.Fragment>
+        <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} toggleForm={this.toggleForm}/>
+        
+        {this.state.form && <Form type={this.state.form} username={this.state.username} password={this.state.password} handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn} toggleForm={this.toggleForm}/> }
 
-            <div id="switch-page-container">
-            <Switch>
-                <Route path={'/:title'}
-                  render={() =><Show handleInput={this.handleInput} />}
-                />
-                <Route path={'/'} 
-                  render={this.state.isLoggedIn ?
-                    () =><Index username={this.state.username} handleInput={this.handleInput}/> : 
-                    () => <Home handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn}/> 
-                  }
-                />
-            </Switch>
-            </div>
-        </div>
+        <Switch>
+            <Route path={'/:title'}
+              render={() =><Show handleInput={this.handleInput} />}
+            />
+            <Route path={'/'} 
+              render={this.state.isLoggedIn ?
+                () =><Index username={this.state.username} handleInput={this.handleInput}/> : 
+                () => <Home toggleForm={this.toggleForm}/> 
+              }
+            />
+        </Switch>
+  
+      </React.Fragment>            
     )
   }
 }
