@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import './Show.css'
+
 
 class Show extends Component {
     render () {
