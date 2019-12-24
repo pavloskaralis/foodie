@@ -15,8 +15,8 @@ class Form extends Component {
                     <input type="text" value={this.props.password} onChange={this.props.handleInput} id="password"/>
                 </div>
                 <div>
-                    <button onClick={()=> this.props.toggleForm("")}>Close</button>
-                    <button>Cancel</button>
+                    <button onClick={()=> this.props.toggleForm("")}>Cancel</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         )

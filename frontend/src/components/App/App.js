@@ -69,17 +69,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} toggleForm={this.toggleForm}/>
-        
         {this.state.form && <Form type={this.state.form} username={this.state.username} password={this.state.password} handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn} toggleForm={this.toggleForm}/> }
-
         <Switch>
-            <Route path={'/:title'}
-              render={() =><Show handleInput={this.handleInput} />}
-            />
             <Route path={'/'} 
               render={this.state.isLoggedIn ?
-                () =><Index username={this.state.username} handleInput={this.handleInput}/> : 
-                () => <Home toggleForm={this.toggleForm}/> 
+                ()=> <Index username={this.state.username} /> : 
+                ()=> <Home toggleForm={this.toggleForm}/> 
               }
             />
         </Switch>
