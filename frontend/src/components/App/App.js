@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../Nav/Nav'
 import Home from '../Home/Home'
@@ -10,16 +10,23 @@ import './App.css'
 
 class App extends Component {
   state = {
+    form: '',
+    isLoggedIn: false,
     username: '',
     password: '',
-    isLoggedIn: false,
-    form: ''
+    lists: [],
+    list: ''
   }
 
   componentDidMount = () => {
     if(localStorage.token) {
       axios.get('http://localhost:3001/user/verify/' + localStorage.token)
-      .then(response => this.setState({username: response.data.username, isLoggedIn: true}))
+      .then(response => axios.get('http://localhost:3001/list/' + response.data.username))
+      .then(response => this.setState({
+        isLoggedIn: true, 
+        username: response.data.username, 
+        lists: response.data.lists
+      }));
     } else {
       this.setState({isLoggedIn: false})
     }
@@ -34,7 +41,7 @@ class App extends Component {
           password: this.state.password
       }).then(response => {
           localStorage.token = response.data.token;
-          this.setState({isLoggedIn: true});
+          this.setState({isLoggedIn: true, form:''});
       }).catch(err => console.log(err))
   }
 
@@ -45,7 +52,7 @@ class App extends Component {
           password: this.state.password
       }).then(response => {
           localStorage.token = response.data.token;
-          this.setState({isLoggedIn: true});
+          this.setState({isLoggedIn: true, form:''});
       }).catch(err => console.log(err))
   }
 
@@ -70,15 +77,17 @@ class App extends Component {
       <React.Fragment>
         <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} toggleForm={this.toggleForm}/>
         {this.state.form && <Form type={this.state.form} username={this.state.username} password={this.state.password} handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn} toggleForm={this.toggleForm}/> }
+        
         <Switch>
-            <Route path={'/'} 
-              render={this.state.isLoggedIn ?
-                ()=> <Index username={this.state.username} /> : 
-                ()=> <Home toggleForm={this.toggleForm}/> 
-              }
-            />
+          <Route path={'/:title'} render={()=> <Show/>}/>
+          <Route path={'/'} 
+            render={this.state.isLoggedIn ?
+              ()=> <Index username={this.state.username} /> : 
+              ()=> <Home toggleForm={this.toggleForm}/> 
+            }
+          />
         </Switch>
-  
+       
       </React.Fragment>            
     )
   }
