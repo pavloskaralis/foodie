@@ -53,12 +53,20 @@ class Update extends Component {
 
     //put route
     onSubmit = (index) => {
-        
+        //the data is dependant on how many input rows there are;
+        // therefor, you will need to define a variable to pass via axios;
+        // use a for loop to add properties to this data based on the amount of input rows;
+        // look at componentDidMount within the Update.js component on how this would look;
+        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
     //put route
     deleteList = (index) => {
-        
+        //use the index to target the specific item in the model's item array
+        // this.findID() will retrieve the model's id for you
+        // make it so the route removes the user from the model's user array
+        // on the back end add a conditional that deletes the model from the data base if the model's user array is empty 
+        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
     render () {

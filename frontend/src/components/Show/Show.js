@@ -29,12 +29,18 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-        
+        //use the index to target the specific item in the model's item array
+        // this.findID() will retrieve the model's id for you 
+        // change only the item's checked boolean 
+        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
     //put route 
     deleteItem = (index) => {
-        
+        //use the index to target the specific item in the model's item array
+        // this.findID() will retrieve the model's id for you
+        // make it so only the item is removed from the model's item array 
+        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
     render () {
