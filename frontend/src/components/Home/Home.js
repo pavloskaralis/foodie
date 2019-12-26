@@ -66,7 +66,7 @@ class Home extends Component {
                     </div>
                 </div>
               
-                <form onSubmit={this.handleSignUp} id="signup">
+                {!this.props.isLoggedIn && <form onSubmit={this.handleSignUp} id="signup">
                     <div>Register Account For Free</div>
                     <input type="text" value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                     <input type="text" value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
@@ -76,7 +76,7 @@ class Home extends Component {
                         Already a member? <br/>
                         Click <a href="/login">here</a> to log in.
                     </div>            
-                </form>
+                </form>}
             </div>
         )
     }

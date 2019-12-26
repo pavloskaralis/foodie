@@ -49,8 +49,8 @@ class App extends Component {
           {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/new-list'} render={()=> <Create username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/update-list/:id'} render={()=> <Update/>}/>}
-          <Route path={'/login'} render={()=> <Login/>}/>
-          <Route path={'/'} render={()=> <Home handleSignUp={this.handleSignUp}/>}/>
+          {!this.state.isLoggedIn && <Route path={'/login'} render={()=> <Login/>}/>}
+          <Route path={'/'} render={()=> <Home handleSignUp={this.handleSignUp} isLoggedIn={this.state.isLoggedIn}/>}/>
         </Switch>
         <Footer isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>        
       </React.Fragment>            
