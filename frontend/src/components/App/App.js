@@ -7,14 +7,14 @@ import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
 import Index from '../Index/Index.js'
 import Show from '../Show/Show.js'
+import Create from '../Create/Create.js'
 import './App.css'
 
 //app will keep state and methods for login/signup/logout
 class App extends Component {
   state = {
     isLoggedIn: false,
-    username: '',
-    listID: ''
+    username: ''
   }
 
   componentDidMount = () => {
@@ -27,11 +27,6 @@ class App extends Component {
     } else {
       this.setState({isLoggedIn: false})
     }
-  }
-
-  selectList = (listID, title) => {
-    this.setState({listID: listID});
-    window.location.href="/shopping-lists/" + title;     
   }
 
   handleLogOut = (e) => {
@@ -49,8 +44,9 @@ class App extends Component {
       <React.Fragment>
         <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>        
         <Switch>
-          {this.state.isLoggedIn && <Route path={'/shopping-lists/:listID'} render={()=> <Show listID={this.state.listID}/>}/>}
-          {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index username={this.state.username} selectList={this.selectList}/>}/>}
+          {this.state.isLoggedIn && <Route path={'/shopping-lists/:id'} render={()=> <Show/>}/>}
+          {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index username={this.state.username}/>}/>}
+          {this.state.isLoggedIn && <Route path={'/new-list'} render={()=> <Create username={this.state.username}/>}/>}
           <Route path={'/login'} render={()=> <Login/>}/>
           <Route path={'/'} render={()=> <Home handleSignUp={this.handleSignUp}/>}/>
         </Switch>

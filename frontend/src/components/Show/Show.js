@@ -11,7 +11,6 @@ class Show extends Component {
     componentDidMount = () => {
         const urlSplit = window.location.href.split('/');
         const listID = urlSplit[urlSplit.length - 1];
-        console.log(listID)
         axios.get('http://localhost:3001/list/id/' + listID)
         .then(response => this.setState({list: response.data.list}));
     }
