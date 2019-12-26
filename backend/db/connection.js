@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 //Environment
 const db = mongoose.connection; 
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/grocery';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/foodie';
 
 //Connect
 mongoose.connect(mongoURI, {useNewUrlParser: true}), ()=> console.log('connected');

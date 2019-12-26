@@ -32,14 +32,14 @@ class Index extends Component {
                 <div>
                     {this.state.lists.map(list => {
                         return(
-                            <div onClick={()=> this.props.selectList(list.title, list._id)} key={list._id}>{list.title}</div>
+                            <a href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
                         )
                     })}
                 </div>
 
-                <a href="/new-list">
-                    <div>Create New List</div>
-                </a>
+                <div>
+                    <a href="/new-list">Create New List</a>
+                </div>
 
             </div>
         )

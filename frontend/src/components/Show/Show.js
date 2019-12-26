@@ -6,17 +6,67 @@ import './Show.css'
 
 class Show extends Component {
     state = {
-        list: ''
+        title: '',
+        users: [],
+        items: []
     } 
+
     componentDidMount = () => {
-        axios.get('http://localhost:3001/list/id/' + this.props.listID)
-        .then(response => this.setState({list: response.data.list}));
+        axios.get('http://localhost:3001/list/id/' + this.findID())
+        .then(response => this.setState({
+            title: response.data.title,
+            users: response.data.users,
+            items: response.data.items
+        }));
+    }
+
+    findID = () => {
+        const url = window.location.href
+        const splitUrl = url.split('/');
+        const listID = splitUrl[splitUrl.length - 1];
+        return listID
+    }
+
+    //put route
+    toggleCross = (index) => {
+        
+    }
+
+    //put route 
+    deleteItem = (index) => {
+        
     }
 
     render () {
         return (
             <div>
-                Show
+                <div>
+                    <div>{this.state.title}</div>
+                    <div>
+                        You can manage your list here. <br/>
+                        If you want to cross out an item use <span>X</span> <br/>
+                        If you need to delete an item use <span>✓</span>
+                    </div>
+                </div>
+
+                <div>
+                    {this.state.items.map((item, index) => {
+                        return (
+                            <div>
+                                <div className={item.crossed ? "" : ""}>{item.name} — {item.quantity}</div>
+                                <div onClick={()=> this.toggleCross(index)}>X</div>
+                                <div onClick={()=> this.deleteItem(index)}>✓</div>
+                            </div>
+                        )
+                    })}
+                </div>
+
+                <div>
+                    <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                    <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                </div>
+
             </div>
         )
     }

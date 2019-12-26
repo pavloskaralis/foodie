@@ -16,8 +16,7 @@ import './App.css'
 class App extends Component {
   state = {
     isLoggedIn: false,
-    username: '',
-    listID: ''
+    username: ''
   }
 
   componentDidMount = () => {
@@ -40,11 +39,6 @@ class App extends Component {
       username: '', 
     });
     history.push('/')
-  }
-
-  selectList = (title, listID) => {
-    history.push('/shopping-lists/' + title);
-    this.setState({listID: listID})
   }
 
   render () {

@@ -14,9 +14,13 @@ router.get('/user/:username', (req, res) => {
 })
 
 //returns specific list based on id (show page)
-router.get('/id/:listID', (req, res) => {
-    List.findById(req.params.listID)
-    .then(list => res.json({list: list}));
+router.get('/id/:id', (req, res) => {
+    List.findById(req.params.id)
+    .then(list => res.json({
+        title: list.title, 
+        users: list.users,
+        items: list.items
+    }));
 })
 
 module.exports = router; 

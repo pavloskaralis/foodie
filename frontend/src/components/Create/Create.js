@@ -30,8 +30,8 @@ class Show extends Component {
     addInput = () => {
         const num = this.state.rows + 1;
         this.setState({
-            [`input`+ num]:"",
-            [`quantity`+ num]:"",
+            ['input'+ num]:"",
+            ['quantity' + num]:"",
             rows: num
         })
     }
@@ -40,9 +40,9 @@ class Show extends Component {
         const rows = [];
         for(let i = 1; i <= this.state.rows; i ++){
             rows.push(
-                <div>
-                    <input type="text" value={this.state.item} placeholder="item name" id={"item" + i}/>
-                    <input type="text" value={this.state.item} placeholder="quantity" id={"quanity" + i}/>
+                <div key={i}>
+                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="item name" id={"item" + i}/>
+                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="quantity" id={"quanity" + i}/>
                 </div>
             )
         }
@@ -58,7 +58,7 @@ class Show extends Component {
                 </div>
 
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.title} placeholder="shopping list title" id="title"/>
+                    <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div onClick={this.addInput}>+</div>
                     <button type="submit">Create List</button>
