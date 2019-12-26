@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../../history.js'
 import axios from 'axios'
 import './Update.css'
 import { number } from 'prop-types';
@@ -56,6 +57,7 @@ class Update extends Component {
         // use a for loop to add properties to this data based on the amount of input rows;
         // look at componentDidMount within the Update.js component on how this would look;
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        // route to /shoping-lists/:id via history.push('url')
     }
 
     //put route
@@ -65,6 +67,7 @@ class Update extends Component {
         // make it so the route removes the user from the model's user array
         // on the back end add a conditional that deletes the model from the data base if the model's user array is empty 
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        // route to /shoping-lists via history.push('url')
     }
 
     render () {
