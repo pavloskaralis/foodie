@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import './Index.css'
-
 
 class Index extends Component {
     state = {
@@ -19,80 +17,28 @@ class Index extends Component {
         .then(response => this.setState({lists: response.data.lists}));
     }
 
-    handleInput = (e) => this.setState({[e.target.id]: e.target.value});
-
-    //create route
-    handleSubmit = (e) => {
-        e.preventDefault();
-    }
-
-    //put route
-    renameList = (e) => {
-        e.preventDefault();
-    }
-
-    //delete route
-    deleteList = (e) => {
-        e.preventDefault();
-    }
-
-    //type must be create or update
-    toggleForm = (e) =>  {
-        e.preventDefault();
-        this.state.formType === "create" ? this.setState({formType: "update"}) : this.setState({formType: "create"});
-    }
-
-    toggleShare = (e) =>  {
-        e.preventDefault();
-        this.setState({share: !this.state.share});
-    }
-
-    //put route
-    shareList = (e) => {
-
-    }
-    
-
     render () {
         return (
             <div> 
-                {this.state.share && 
-                    // render as popup with position: absolute
-                    <form onSubmit={this.shareList}>
-                        <div>
-                            <label>Username</label>
-                            <input type="text" value={this.state.shareWith} onChange={this.handleInput} id="shareWith"/>
-                        </div>
-                        <div>
-                            <button onClick={this.toggleShare}>Cancel</button>
-                            <button type="submit">Share</button>
-                        </div>
-                    </form>
-                }
                 
-                <form onSubmit={this.state.formType === "create" ? this.handleSubmit : this.renameList}>
+                <div>
+                    <div>My Shopping Lists</div>
                     <div>
-                        <label>Title</label>
-                        <input type="text" value={this.state.title} onChange={this.handleInput} id="title"/>
+                        Here are all of your shopping lists. <br/>
+                        Click on the individual list to view, update, or share.
                     </div>
-                    <button type="submit">{this.state.formType === "create" ? "Create" : "Update" }</button>
-                </form>
-                
+                </div>
+
                 <div>
                     {this.state.lists.map(list => {
                         return(
-                            <div onClick={()=>this.props.selectList(list._id, list.title)} key={list._id}>
-                                <div>{list.title}</div>
-                                <div>
-                                    <button onClick={this.toggleShare}>Share</button>
-                                    {this.state.formType === "create" ? 
-                                            <button onClick={this.toggleForm}>Rename</button> : 
-                                            <button onClick={this.toggleForm}>Cancel</button>}
-                                    <button onClick={this.deleteList}>Delete</button>
-                                </div>
-                            </div>
+                            <a href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
                         )
                     })}
+                </div>
+
+                <div>
+                    <a href="/new-list">Create New List</a>
                 </div>
 
             </div>

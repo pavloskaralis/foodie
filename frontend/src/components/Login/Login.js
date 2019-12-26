@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
+import history from '../../history'
 import axios from 'axios'
 import './Login.css'
 
 
 class Login extends Component {
     state = {
-        isLoggedIn: false,
         username: '',
         password: '',
         error: false
@@ -20,8 +20,12 @@ class Login extends Component {
             password: this.state.password
         }).then(response => {
             localStorage.token = response.data.token;
-            this.setState({isLoggedIn: true, formType:''});
-            window.location.href = "/shopping-lists";
+            this.setState({
+                username: '',
+                password: ''
+            });
+            history.push("/shopping-lists");
+            this.props.resetApp();
         }).catch(err => {
             console.log(err);
             this.setState({error: true})

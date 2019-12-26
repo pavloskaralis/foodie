@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../../history'
 import axios from 'axios'
 import './Home.css'
 
@@ -23,7 +24,8 @@ class Home extends Component {
                 username: '',
                 password: ''
             });
-            window.location.href = "/shopping-lists";
+            history.push("/shopping-lists");
+            this.props.resetApp();
         }).catch(err => {
             console.log(err);
             this.setState({error: true})
@@ -66,7 +68,7 @@ class Home extends Component {
                     </div>
                 </div>
               
-                <form onSubmit={this.handleSignUp} id="signup">
+                {!this.props.isLoggedIn && <form onSubmit={this.handleSignUp} id="signup">
                     <div>Register Account For Free</div>
                     <input type="text" value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                     <input type="text" value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
@@ -76,7 +78,7 @@ class Home extends Component {
                         Already a member? <br/>
                         Click <a href="/login">here</a> to log in.
                     </div>            
-                </form>
+                </form>}
             </div>
         )
     }

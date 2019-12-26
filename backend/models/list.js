@@ -5,7 +5,7 @@ const mongoose = require('../db/connection.js');
 const listSchema = new mongoose.Schema({
     users: [String],
     title: String,
-    items: [String]
+    items: [{name: String, quantity: String, crossed: Boolean}]
 }, {timestamps: true});
 
 const List = mongoose.model('Lists', listSchema);
