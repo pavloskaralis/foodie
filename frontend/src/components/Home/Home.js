@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../../history'
 import axios from 'axios'
 import './Home.css'
 
@@ -23,7 +24,8 @@ class Home extends Component {
                 username: '',
                 password: ''
             });
-            window.location.href = "/shopping-lists";
+            history.push("/shopping-lists");
+            this.props.resetApp();
         }).catch(err => {
             console.log(err);
             this.setState({error: true})

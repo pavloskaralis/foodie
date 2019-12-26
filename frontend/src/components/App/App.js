@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import history from '../../history'
 import axios from 'axios'
 import Nav from '../Nav/Nav.js'
 import Footer from '../Footer/Footer.js'
@@ -37,7 +38,7 @@ class App extends Component {
       isLoggedIn: false,
       username: '', 
     });
-    window.location.href="/";
+    history.push('/')
   }
 
   render () {
@@ -49,8 +50,8 @@ class App extends Component {
           {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/new-list'} render={()=> <Create username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/update-list/:id'} render={()=> <Update/>}/>}
-          {!this.state.isLoggedIn && <Route path={'/login'} render={()=> <Login/>}/>}
-          <Route path={'/'} render={()=> <Home handleSignUp={this.handleSignUp} isLoggedIn={this.state.isLoggedIn}/>}/>
+          {!this.state.isLoggedIn && <Route path={'/login'} render={()=> <Login resetApp={this.componentDidMount}/>}/>}
+          <Route path={'/'} render={()=> <Home resetApp={this.componentDidMount} handleSignUp={this.handleSignUp} isLoggedIn={this.state.isLoggedIn}/>}/>
         </Switch>
         <Footer isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>        
       </React.Fragment>            
