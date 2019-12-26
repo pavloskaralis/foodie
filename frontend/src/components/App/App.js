@@ -16,7 +16,8 @@ import './App.css'
 class App extends Component {
   state = {
     isLoggedIn: false,
-    username: ''
+    username: '',
+    listID: ''
   }
 
   componentDidMount = () => {
@@ -41,13 +42,18 @@ class App extends Component {
     history.push('/')
   }
 
+  selectList = (title, listID) => {
+    history.push('/shopping-lists/' + title);
+    this.setState({listID: listID})
+  }
+
   render () {
     return (
       <React.Fragment>
         <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>        
         <Switch>
-          {this.state.isLoggedIn && <Route path={'/shopping-lists/:id'} render={()=> <Show/>}/>}
-          {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index username={this.state.username}/>}/>}
+          {this.state.isLoggedIn && <Route path={'/shopping-lists/:id'} render={()=> <Show listID={this.state.listID}/>}/>}
+          {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index selectList={this.selectList} username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/new-list'} render={()=> <Create username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/update-list/:id'} render={()=> <Update/>}/>}
           {!this.state.isLoggedIn && <Route path={'/login'} render={()=> <Login resetApp={this.componentDidMount}/>}/>}

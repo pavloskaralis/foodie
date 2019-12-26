@@ -9,9 +9,7 @@ class Show extends Component {
         list: ''
     } 
     componentDidMount = () => {
-        const urlSplit = window.location.href.split('/');
-        const listID = urlSplit[urlSplit.length - 1];
-        axios.get('http://localhost:3001/list/id/' + listID)
+        axios.get('http://localhost:3001/list/id/' + this.props.listID)
         .then(response => this.setState({list: response.data.list}));
     }
 
