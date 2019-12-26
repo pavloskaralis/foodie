@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import './Index.css'
-
-// This component's structure is incomplete and not yet based off the wireframe
 
 class Index extends Component {
     state = {
@@ -19,7 +16,7 @@ class Index extends Component {
         axios.get('http://localhost:3001/list/user/' + this.state.username)
         .then(response => this.setState({lists: response.data.lists}));
     }
-    
+
     render () {
         return (
             <div> 
