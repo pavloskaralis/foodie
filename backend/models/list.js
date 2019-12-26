@@ -5,7 +5,6 @@ const mongoose = require('../db/connection.js');
 const listSchema = new mongoose.Schema({
     users: [String],
     title: String,
-    description: String,
     items: [String]
 }, {timestamps: true});
 

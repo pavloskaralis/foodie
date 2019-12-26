@@ -5,6 +5,7 @@ const jwt = require('jwt-simple');
 const config = require('../config/config.js');
 const User = require('../models/user.js');
 
+//retrieves username from JWT when client returns
 router.get('/verify/:token', (req, res) => {
     const ca = req.params.token;
     const base64Url = ca.split('.')[1];
