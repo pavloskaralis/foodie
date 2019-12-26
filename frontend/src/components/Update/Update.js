@@ -3,8 +3,6 @@ import axios from 'axios'
 import './Update.css'
 import { number } from 'prop-types';
 
-// This component's structure is incomplete and not yet based off the wireframe
-
 class Update extends Component {
     state = {
         title: '',
