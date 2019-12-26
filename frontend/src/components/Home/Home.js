@@ -4,9 +4,7 @@ import './Home.css'
 
 
 class Home extends Component {
-   
     state = {
-        isLoggedIn: false,
         username: '',
         password: '',
         error: false
@@ -21,7 +19,10 @@ class Home extends Component {
             password: this.state.password
         }).then(response => {
             localStorage.token = response.data.token;
-            this.setState({isLoggedIn: true, formType:''});
+            this.setState({
+                username: '',
+                password: ''
+            });
             window.location.href = "/shopping-lists";
         }).catch(err => {
             console.log(err);
@@ -70,7 +71,7 @@ class Home extends Component {
                     <input type="text" value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                     <input type="text" value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
                     <button type="submit">Sign Up</button> 
-                    {this.state.error && <div>Username already exists.</div>}
+                    {this.state.error ? <div>Username already exists.</div> : <div></div>}
                     <div>
                         Already a member? <br/>
                         Click <a href="/login">here</a> to log in.

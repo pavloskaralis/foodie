@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../Nav/Nav.js'
+import Footer from '../Footer/Footer.js'
 import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
 // index page will keep state and methods for all list items
@@ -37,23 +38,14 @@ class App extends Component {
     window.location.href="/shopping-lists/" + title;     
   }
 
-  handleLogIn = (e) => {
-      e.preventDefault();
-      axios.post('http://localhost:3001/user/login', {
-          username: this.state.username,
-          password: this.state.password
-      }).then(response => {
-          localStorage.token = response.data.token;
-          this.setState({isLoggedIn: true, formType:''});
-      }).catch(err => console.log(err))
-  }
-
-  handleLogOut = () => {
-      this.setState({
-        isLoggedIn: false,
-        username: '', 
-      });
-      localStorage.clear();
+  handleLogOut = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    this.setState({
+      isLoggedIn: false,
+      username: '', 
+    });
+    window.location.href="/";
   }
 
   render () {
@@ -66,6 +58,7 @@ class App extends Component {
           <Route path={'/login'} render={()=> <Login/>}/>
           <Route path={'/'} render={()=> <Home handleSignUp={this.handleSignUp}/>}/>
         </Switch>
+        <Footer isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>        
       </React.Fragment>            
     )
   }
