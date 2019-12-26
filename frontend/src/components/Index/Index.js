@@ -51,7 +51,7 @@ class Index extends Component {
     shareList = (e) => {
 
     }
-        
+    
 
     render () {
         return (
@@ -81,7 +81,7 @@ class Index extends Component {
                 <div>
                     {this.state.lists.map(list => {
                         return(
-                            <a href={"/" + list._id} key={list._id}>
+                            <div onClick={()=>this.props.selectList(list._id, list.title)} key={list._id}>
                                 <div>{list.title}</div>
                                 <div>
                                     <button onClick={this.toggleShare}>Share</button>
@@ -90,7 +90,7 @@ class Index extends Component {
                                             <button onClick={this.toggleForm}>Cancel</button>}
                                     <button onClick={this.deleteList}>Delete</button>
                                 </div>
-                            </a>
+                            </div>
                         )
                     })}
                 </div>

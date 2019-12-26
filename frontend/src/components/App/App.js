@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import Nav from '../Nav/Nav.js'
+import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
 // index page will keep state and methods for all list items
 // clicking a list item will pass up the id to app, and back down to show
@@ -16,7 +17,7 @@ class App extends Component {
   state = {
     isLoggedIn: false,
     username: '',
-    password: '',
+    listID: ''
   }
 
   componentDidMount = () => {
@@ -31,17 +32,9 @@ class App extends Component {
     }
   }
 
-  handleInput = (e) => this.setState({[e.target.id]: e.target.value});
-
-  handleSignUp = (e) => {
-      e.preventDefault();
-      axios.post('http://localhost:3001/user/signup', {
-          username: this.state.username,
-          password: this.state.password
-      }).then(response => {
-          localStorage.token = response.data.token;
-          this.setState({isLoggedIn: true, formType:''});
-      }).catch(err => console.log(err))
+  selectList = (listID, title) => {
+    this.setState({listID: listID});
+    window.location.href="/shopping-lists/" + title;     
   }
 
   handleLogIn = (e) => {
@@ -57,34 +50,22 @@ class App extends Component {
 
   handleLogOut = () => {
       this.setState({
-        formType: '',
         isLoggedIn: false,
-        username: '',
-        password: '',
-        listID: ''
+        username: '', 
       });
       localStorage.clear();
   }
 
-  //type must be "signup", "login", or ""  
-  toggleForm = () =>  this.state.formType === "login" ? 
-    this.setState({formType: "signup"}) : this.setState({formType: "login"});
-
-
   render () {
     return (
       <React.Fragment>
-        <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} toggleHomeForm={this.toggleHomeForm}/>        
+        <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>        
         <Switch>
-          <Route path={'/:listID'} render={()=> <Show listID={this.state.listID}/>}/>
-          <Route path={'/'} 
-            render={this.state.isLoggedIn ?
-              ()=> <Index username={this.state.username}/> : 
-              ()=> <Home/> 
-            }
-          />
+          {this.state.isLoggedIn && <Route path={'/shopping-lists/:listID'} render={()=> <Show listID={this.state.listID}/>}/>}
+          {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index username={this.state.username} selectList={this.selectList}/>}/>}
+          <Route path={'/login'} render={()=> <Login/>}/>
+          <Route path={'/'} render={()=> <Home handleSignUp={this.handleSignUp}/>}/>
         </Switch>
-       
       </React.Fragment>            
     )
   }

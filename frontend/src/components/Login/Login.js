@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './API.css'
+import './Login.css'
 
 
-class API extends Component {
+class Home extends Component {
     render () {
         return (
             <div>
-                API
+                login
             </div>
         )
     }
 }
 
-export default API
+export default Home

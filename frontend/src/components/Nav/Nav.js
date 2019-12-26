@@ -11,8 +11,8 @@ class Nav extends Component {
                 </div>
                 <div>
                     {<a href="/">Home</a>}
-                    {this.props.isLoggedIn ? <a to="/shopping-lists">Shopping Lists</a> : <a to="/login">Log In</a>}
-                    {this.props.isLoggedIn ? <a to="/" onClick={this.props.handleLogOut}>Log Out</a> : <a to="#signup">Register</a> }
+                    {this.props.isLoggedIn ? <a href="/shopping-lists">Shopping Lists</a> : <a href="/login">Log In</a>}
+                    {this.props.isLoggedIn ? <a href="/" onClick={this.props.handleLogOut}>Log Out</a> : <a href="/#signup">Register</a> }
                 </div>
             </nav>
         )
