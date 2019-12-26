@@ -5,11 +5,14 @@ class Nav extends Component {
     render () {
         return (
             <nav>
-                <a to="/">App Name </a>
                 <div>
-                    {this.props.isLoggedIn && <a to="/" onClick={this.props.handleLogOut}>Log Out</a>}
-                    {!this.props.isLoggedIn && <a to="" onClick={()=>this.props.toggleHomeForm("signup")}>Sign Up</a>}
-                    {!this.props.isLoggedIn && <a to="" onClick={()=>this.props.toggleHomeForm("login")}>Log In</a>}
+                    <div></div>
+                    <div>Foodie</div>
+                </div>
+                <div>
+                    {<a href="/">Home</a>}
+                    {this.props.isLoggedIn ? <a to="/shopping-lists">Shopping Lists</a> : <a to="/login">Log In</a>}
+                    {this.props.isLoggedIn ? <a to="/" onClick={this.props.handleLogOut}>Log Out</a> : <a to="#signup">Register</a> }
                 </div>
             </nav>
         )

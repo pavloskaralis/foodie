@@ -9,13 +9,11 @@ import Index from '../Index/Index.js'
 // show page will keep state and methods for selected list's items field 
 // show page will use the id passed from app to find correct list
 import Show from '../Show/Show.js'
-import HomeForm from '../HomeForm/HomeForm.js'
 import './App.css'
 
 //app will keep state and methods for login/signup/logout
 class App extends Component {
   state = {
-    homeForm: '',
     isLoggedIn: false,
     username: '',
     password: '',
@@ -42,7 +40,7 @@ class App extends Component {
           password: this.state.password
       }).then(response => {
           localStorage.token = response.data.token;
-          this.setState({isLoggedIn: true, homeForm:''});
+          this.setState({isLoggedIn: true, formType:''});
       }).catch(err => console.log(err))
   }
 
@@ -53,13 +51,13 @@ class App extends Component {
           password: this.state.password
       }).then(response => {
           localStorage.token = response.data.token;
-          this.setState({isLoggedIn: true, homeForm:''});
+          this.setState({isLoggedIn: true, formType:''});
       }).catch(err => console.log(err))
   }
 
   handleLogOut = () => {
       this.setState({
-        homeForm: '',
+        formType: '',
         isLoggedIn: false,
         username: '',
         password: '',
@@ -69,20 +67,20 @@ class App extends Component {
   }
 
   //type must be "signup", "login", or ""  
-  toggleHomeForm = type => this.setState({homeForm: type});
+  toggleForm = () =>  this.state.formType === "login" ? 
+    this.setState({formType: "signup"}) : this.setState({formType: "login"});
+
 
   render () {
     return (
       <React.Fragment>
-        <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} toggleHomeForm={this.toggleHomeForm}/>
-        {this.state.homeForm && <HomeForm type={this.state.homeForm} username={this.state.username} password={this.state.password} handleInput={this.handleInput} handleSignUp={this.handleSignUp} handleLogIn={this.handleLogIn} toggleHomeForm={this.toggleHomeForm}/> }
-        
+        <Nav isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} toggleHomeForm={this.toggleHomeForm}/>        
         <Switch>
           <Route path={'/:listID'} render={()=> <Show listID={this.state.listID}/>}/>
           <Route path={'/'} 
             render={this.state.isLoggedIn ?
               ()=> <Index username={this.state.username}/> : 
-              ()=> <Home toggleHomeForm={this.toggleHomeForm}/> 
+              ()=> <Home/> 
             }
           />
         </Switch>
