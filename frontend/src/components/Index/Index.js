@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import './Index.css'
 
+// This component's structure is incomplete and not yet based off the wireframe
 
 class Index extends Component {
     state = {

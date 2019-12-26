@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './Show.css'
 
+// This component's structure is incomplete and not yet based off the wireframe
 
 class Show extends Component {
     state = {
