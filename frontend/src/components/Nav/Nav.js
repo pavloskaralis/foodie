@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
 import './Nav.css'
 
 class Nav extends Component {
     render () {
         return (
             <nav>
-                <NavLink to="/">App Name </NavLink>
-                {this.props.isLoggedIn && <NavLink to="/" onClick={this.props.handleLogOut}>Log Out</NavLink>}
-                {!this.props.isLoggedIn && <NavLink to="" onClick={()=>this.props.toggleForm("signup")}>Sign Up</NavLink>}
-                {!this.props.isLoggedIn && <NavLink to="" onClick={()=>this.props.toggleForm("login")}>Log In</NavLink>}
+                <a to="/">App Name </a>
+                <div>
+                    {this.props.isLoggedIn && <a to="/" onClick={this.props.handleLogOut}>Log Out</a>}
+                    {!this.props.isLoggedIn && <a to="" onClick={()=>this.props.toggleHomeForm("signup")}>Sign Up</a>}
+                    {!this.props.isLoggedIn && <a to="" onClick={()=>this.props.toggleHomeForm("login")}>Log In</a>}
+                </div>
             </nav>
         )
     }

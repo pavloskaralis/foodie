@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './Form.css'
+import './HomeForm.css'
 
-class Form extends Component {
+class HomeForm extends Component {
     render () {
         return (
             <form onSubmit={this.props.type === "signup" ? this.props.handleSignUp : this.props.handleLogIn}>
@@ -15,12 +15,12 @@ class Form extends Component {
                     <input type="text" value={this.props.password} onChange={this.props.handleInput} id="password"/>
                 </div>
                 <div>
-                    <button onClick={()=> this.props.toggleForm("")}>Cancel</button>
-                    <button type="submit">Submit</button>
+                    <button onClick={()=> this.props.toggleHomeForm("")}>Cancel</button>
+                    <button type="submit">{this.props.type === "signup" ? "Sign Up" : "Log In" }</button>
                 </div>
             </form>
         )
     }
 }
 
-export default Form
+export default HomeForm

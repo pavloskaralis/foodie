@@ -7,7 +7,12 @@ class Home extends Component {
     render () {
         return (
             <div>
-                Home
+                <h1>App Name</h1>
+                <h3>App description</h3>
+                <div>
+                    <button onClick={()=> this.props.toggleHomeForm("signup")}>Sign Up</button>
+                    <button onClick={()=> this.props.toggleHomeForm("login")}>Log In</button>
+                </div>
             </div>
         )
     }
