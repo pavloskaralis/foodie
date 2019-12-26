@@ -5,11 +5,7 @@ import Nav from '../Nav/Nav.js'
 import Footer from '../Footer/Footer.js'
 import Login from '../Login/Login.js'
 import Home from '../Home/Home.js'
-// index page will keep state and methods for all list items
-// clicking a list item will pass up the id to app, and back down to show
 import Index from '../Index/Index.js'
-// show page will keep state and methods for selected list's items field 
-// show page will use the id passed from app to find correct list
 import Show from '../Show/Show.js'
 import './App.css'
 
