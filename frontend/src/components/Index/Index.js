@@ -19,12 +19,7 @@ class Index extends Component {
         axios.get('http://localhost:3001/list/user/' + this.state.username)
         .then(response => this.setState({lists: response.data.lists}));
     }
-
-
-
-
     
-
     render () {
         return (
             <div> 
