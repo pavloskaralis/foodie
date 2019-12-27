@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../../history.js'
 import axios from 'axios'
 import './Create.css'
 
@@ -21,11 +22,13 @@ class Show extends Component {
     //create route
     handleSubmit = (e) => {
         e.preventDefault();
-        //the data is dependant on how many input rows there are;
+        // the data is dependant on how many input rows there are;
         // therefor, you will need to define a variable to pass via axios;
         // use a for loop to add properties to this data based on the amount of input rows;
         // look at componentDidMount within the Update.js component on how this would look;
+        // there also needs to be a conditional that filters out blank input pairs
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        // route to /shoping-lists/:id via history.push('url')
     }
     
     handleInput = (e) => this.setState({[e.target.id]: e.target.value});
