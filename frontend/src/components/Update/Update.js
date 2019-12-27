@@ -51,11 +51,12 @@ class Update extends Component {
     }
 
     //put route
-    onSubmit = (index) => {
+    handleSubmit = (index) => {
         //the data is dependant on how many input rows there are;
         // therefor, you will need to define a variable to pass via axios;
         // use a for loop to add properties to this data based on the amount of input rows;
         // look at componentDidMount within the Update.js component on how this would look;
+        // there also needs to be a conditional that filters out blank input pairs
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
         // route to /shoping-lists/:id via history.push('url')
     }
@@ -92,7 +93,7 @@ class Update extends Component {
                     </div>
                 </div>
 
-                <form onSubmit={this.handleSubmit}>
+                <form handleSubmit={this.handleSubmit}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div onClick={this.addInput}>+</div>
