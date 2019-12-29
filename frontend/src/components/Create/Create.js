@@ -33,6 +33,7 @@ class Show extends Component {
         for(let i = 1; i <= this.state.rows; i++){
             if((this.state['item' + i]) && (this.state['quantity' + i])){
                 const item = {
+            
                     name: this.state['item' + i],
                     quantity: this.state['quantity' + i],
                     crossed: false

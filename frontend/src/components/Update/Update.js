@@ -51,11 +51,11 @@ class Update extends Component {
     }
 
     //put route
-    // handleSubmit = (index) => {
-    //     e.preventDefault();
-    //     axios.put('')
-    //     take index and retrieve item record,
-    // }
+    handleSubmit = (index) => {
+        // e.preventDefault();
+        // axios.put('')
+        // take index and retrieve list record,
+    }
 
     //put route
     deleteList = (index) => {

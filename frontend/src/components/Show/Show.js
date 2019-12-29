@@ -27,6 +27,12 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
+        const target = this.findID(index);
+        const baseURL = `http://localhost:3001/`
+        axios.put(`${baseURL}/${target}`)
+        .then(res => res)
+        // .then();
+
         //use the index to target the specific item in the model's item array
         // this.findID() will retrieve the model's id for you 
         // change only the item's checked boolean 
