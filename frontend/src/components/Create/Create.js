@@ -16,12 +16,35 @@ class Show extends Component {
         item4: "",
         quantity4: "",
         item5: "",
-        quantity5: ""
+        quantity5: "",
+        username: this.props.username
+
     } 
+    
 
     //create route
     handleSubmit = (e) => {
         e.preventDefault();
+        const list = {
+            title: this.state.title,
+            users: [this.state.username],
+            items: []
+        };
+        for(let i = 1; i <= this.state.rows; i++){
+            if((this.state['item' + i]) && (this.state['quantity' + i])){
+                const item = {
+                    name: this.state['item' + i],
+                    quantity: this.state['quantity' + i],
+                    crossed: false
+                }
+                console.log(this.state['quantity' + i] )
+                console.log(item.quantity)
+                list.items.push(item);
+            }
+            
+        }
+        axios.post('http://localhost:3001/list', list)
+        .then(() => history.push('/shopping-lists')) 
         // the data is dependant on how many input rows there are;
         // therefor, you will need to define a variable to pass via axios;
         // use a for loop to add properties to this data based on the amount of input rows;
@@ -48,7 +71,7 @@ class Show extends Component {
             rows.push(
                 <div key={i}>
                     <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="item name" id={"item" + i}/>
-                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="quantity" id={"quanity" + i}/>
+                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="quantity" id={"quantity" + i}/>
                 </div>
             )
         }

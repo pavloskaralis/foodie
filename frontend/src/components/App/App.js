@@ -49,7 +49,7 @@ class App extends Component {
           {this.state.isLoggedIn && <Route path={'/shopping-lists/:id'} render={()=> <Show listID={this.state.listID}/>}/>}
           {this.state.isLoggedIn && <Route path={'/shopping-lists'} render={()=> <Index selectList={this.selectList} username={this.state.username}/>}/>}
           {this.state.isLoggedIn && <Route path={'/new-list'} render={()=> <Create username={this.state.username}/>}/>}
-          {this.state.isLoggedIn && <Route path={'/update-list/:id'} render={()=> <Update/>}/>}
+          {this.state.isLoggedIn && <Route path={'/update-list/:id'} render={()=> <Update username={this.state.username}/>}/>}
           {!this.state.isLoggedIn && <Route path={'/login'} render={()=> <Login resetApp={this.componentDidMount}/>}/>}
           <Route path={'/'} render={()=> <Home resetApp={this.componentDidMount} handleSignUp={this.handleSignUp} isLoggedIn={this.state.isLoggedIn}/>}/>
         </Switch>

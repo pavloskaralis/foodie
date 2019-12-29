@@ -7,8 +7,8 @@ const List = require('../models/list.js');
 //returns all lists associated with client username (index page)
 router.get('/user/:username', (req, res) => {
     List.find({users: {$in: [req.params.username]}})
-    .then(lists => res.json(
-        {username: req.params.username, 
+    .then(lists => res.json({
+            username: req.params.username, 
             lists: lists
         }));
 })
@@ -21,6 +21,10 @@ router.get('/id/:id', (req, res) => {
         users: list.users,
         items: list.items
     }));
+})
+router.post('/', (req,res) =>{
+    List.create(req.body)
+    .then(list =>{console.log(list); res.json({list: list})})
 })
 
 module.exports = router; 
