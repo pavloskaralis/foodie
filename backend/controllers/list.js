@@ -8,7 +8,7 @@ const List = require('../models/list.js');
 router.get('/user/:username', (req, res) => {
     List.find({users: {$in: [req.params.username]}})
     .then(lists => res.json({
-            username: req.params.username, 
+            username: req.params.username,
             lists: lists
         }));
 })
@@ -17,7 +17,7 @@ router.get('/user/:username', (req, res) => {
 router.get('/id/:id', (req, res) => {
     List.findById(req.params.id)
     .then(list => res.json({
-        title: list.title, 
+        title: list.title,
         users: list.users,
         items: list.items
     }));
@@ -26,5 +26,12 @@ router.post('/', (req,res) =>{
     List.create(req.body)
     .then(list =>{console.log(list); res.json({list: list})})
 })
-
-module.exports = router; 
+router.put('/id/:id', (req,res) =>{
+  List.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err, updatedList) => {
+      res.json(updatedList)
+    })
+})
+module.exports = router;
