@@ -27,10 +27,27 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-        const target = this.findID(index);
-        const baseURL = `http://localhost:3001/`
-        axios.put(`${baseURL}/${target}`)
-        .then(res => res)
+        const target = this.findID();
+        const product = this.state.items[index].name;
+        const baseURL = `http://localhost:3001/list/id/${target}`
+        axios.put(`${baseURL}`, this.state)
+        .then((res) => {
+            const crossed = res.items.crossed;
+            this.setState({
+                crossed: !crossed
+            });
+            // res.items.crossed = !res.items.crossed;
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        
+        // this.setState({
+            
+        // }))
+        // .then(res => this.setState)
+        console.log(`${product}`);
+        // .then(res => res)
         // .then();
 
         //use the index to target the specific item in the model's item array

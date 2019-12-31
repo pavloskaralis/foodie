@@ -52,9 +52,16 @@ class Update extends Component {
 
     //put route
     handleSubmit = (index) => {
-        // e.preventDefault();
-        // axios.put('')
-        // take index and retrieve list record,
+        const target = this.findID();
+        const product = this.state.items[index].name;
+        const baseURL = `http://localhost:3001/list/id/${target}`
+        axios.put(`${baseURL}`, this.state)
+        .then((res)=> {
+            this.setState({
+                
+
+            })
+        })
     }
 
     //put route
