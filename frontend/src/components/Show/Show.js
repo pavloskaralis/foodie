@@ -27,24 +27,12 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-        const target = this.findID(index);
-        const baseURL = `http://localhost:3001/`
-        axios.put(`${baseURL}/${target}`)
-        .then(res => res)
-        // .then();
 
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you 
-        // change only the item's checked boolean 
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
     //put route 
     deleteItem = (index) => {
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // make it so only the item is removed from the model's item array 
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        
     }
 
     render () {
@@ -62,8 +50,8 @@ class Show extends Component {
                 <div>
                     {this.state.items.map((item, index) => {
                         return (
-                            <div>
-                                <div className={item.crossed ? "" : ""}>{item.name} — {item.quantity}</div>
+                            <div key={index}>
+                                <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
                                 <div onClick={()=> this.toggleCross(index)}>X</div>
                                 <div onClick={()=> this.deleteItem(index)}>✓</div>
                             </div>
@@ -73,8 +61,8 @@ class Show extends Component {
 
                 <div>
                     <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
                     <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
 
             </div>

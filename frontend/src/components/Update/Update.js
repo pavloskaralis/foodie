@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import history from '../../history.js'
 import axios from 'axios'
 import './Update.css'
-import { number } from 'prop-types';
 
 class Update extends Component {
     state = {
@@ -31,7 +30,6 @@ class Update extends Component {
         })
     }
 
-
     findID = () => {
         const url = window.location.href
         const splitUrl = url.split('/');
@@ -51,20 +49,11 @@ class Update extends Component {
     }
 
     //put route
-    handleSubmit = (index) => {
-        // e.preventDefault();
-        // axios.put('')
-        // take index and retrieve list record,
+    handleUpdate = (e) => {
     }
 
     //put route
-    deleteList = (index) => {
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // make it so the route removes the user from the model's user array
-        // on the back end add a conditional that deletes the model from the data base if the model's user array is empty 
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
-        // route to /shoping-lists via history.push('url')
+    deleteList = () => {
     }
 
     render () {
@@ -73,7 +62,7 @@ class Update extends Component {
             rows.push(
                 <div key={i}>
                     <input type="text" onChange={this.handleInput} value={this.state["name" + i]} placeholder="item name" id={"item" + i} />
-                    <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quanity" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quantity" + i} />
                 </div>
             )
         }
@@ -89,7 +78,7 @@ class Update extends Component {
                     </div>
                 </div>
 
-                <form handleSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div onClick={this.addInput}>+</div>
@@ -99,6 +88,10 @@ class Update extends Component {
                     </div>     
                 </form>
 
+                <div>
+                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                </div>
             </div>
         )
     }
