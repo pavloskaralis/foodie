@@ -27,18 +27,12 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-        const list = this.state;
-        list.items[index].crossed = !list.items[index].crossed;
-        axios.put('http://localhost:3001/list/id/' + this.findID(), list)
-        .then(response => this.setState({items:response.data.items}));
+
     }
 
     //put route 
     deleteItem = (index) => {
-        const list = this.state;
-        list.items = [...list.items.slice(0,index), ...list.items.slice(index + 1)];
-        axios.put('http://localhost:3001/list/id/' + this.findID(), list)
-        .then(response => this.setState({items:response.data.items}));
+        
     }
 
     render () {

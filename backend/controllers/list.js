@@ -29,15 +29,11 @@ router.post('/', (req,res) =>{
 })
 
 router.put('/id/:id', (req,res) =>{
-  List.findByIdAndUpdate(req.params.id,req.body,{new: true},(err, list) => {
-        res.json(list)
-      })
+ 
 })
 
 router.delete('/id/:id', (req,res) =>{
-    List.findByIdAndDelete(req.params.id,(err, list) => {
-          res.json(list)
-        })
+   
 })
 
 module.exports = router;

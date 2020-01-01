@@ -50,44 +50,10 @@ class Update extends Component {
 
     //put route
     handleUpdate = (e) => {
-        e.preventDefault();
-        const list = {
-            title: this.state.title,
-            users: this.state.users,
-            items: []
-        };
-        for(let i = 1; i <= this.state.rows; i++){
-            if((this.state['item' + i]) && (this.state['quantity' + i])){
-                const item = {
-                    name: this.state['item' + i],
-                    quantity: this.state['quantity' + i],
-                    crossed: false
-                }
-                list.items.push(item);
-            }
-        }
-        if(this.state.title){
-            axios.put('http://localhost:3001/list/id/' + this.findID(), list)
-            .then(() => history.push('/shopping-lists/' + this.findID())) 
-        }
     }
 
     //put route
     deleteList = () => {
-        const list = {
-            title: this.state.title,
-            users: this.state.users,
-            items: this.state.items
-        }
-        const index = list.users.indexOf(this.props.username);
-        list.users.splice(index, 1);
-        if (list.users.length > 0) {
-            axios.put('http://localhost:3001/list/id/' + this.findID(), list)
-            .then(() => history.push('/shopping-lists/'))
-        } else {
-            axios.put('http://localhost:3001/list/id/' + this.findID(), list)
-            .then(() => history.push('/shopping-lists/'))
-        }
     }
 
     render () {
