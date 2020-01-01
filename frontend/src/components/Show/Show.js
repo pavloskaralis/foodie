@@ -27,41 +27,18 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-        const target = this.findID();
-        const product = this.state.items[index].name;
-        const baseURL = `http://localhost:3001/list/id/${target}`
-        axios.put(`${baseURL}`, this.state)
-        .then((res) => {
-            const crossed = res.items.crossed;
-            this.setState({
-                crossed: !crossed
-            });
-            // res.items.crossed = !res.items.crossed;
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-        
-        // this.setState({
-            
-        // }))
-        // .then(res => this.setState)
-        console.log(`${product}`);
-        // .then(res => res)
-        // .then();
-
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you 
-        // change only the item's checked boolean 
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        const list = this.state;
+        list.items[index].crossed = !list.items[index].crossed;
+        axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+        .then(response => this.setState({items:response.data.items}));
     }
 
     //put route 
     deleteItem = (index) => {
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // make it so only the item is removed from the model's item array 
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        const list = this.state;
+        list.items = [...list.items.slice(0,index), ...list.items.slice(index + 1)];
+        axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+        .then(response => this.setState({items:response.data.items}));
     }
 
     render () {
@@ -79,8 +56,8 @@ class Show extends Component {
                 <div>
                     {this.state.items.map((item, index) => {
                         return (
-                            <div>
-                                <div className={item.crossed ? "" : ""}>{item.name} — {item.quantity}</div>
+                            <div key={index}>
+                                <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
                                 <div onClick={()=> this.toggleCross(index)}>X</div>
                                 <div onClick={()=> this.deleteItem(index)}>✓</div>
                             </div>
@@ -90,8 +67,8 @@ class Show extends Component {
 
                 <div>
                     <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
                     <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
 
             </div>

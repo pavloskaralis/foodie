@@ -51,27 +51,47 @@ class Update extends Component {
     }
 
     //put route
-    handleSubmit = (index) => {
-        const target = this.findID();
-        const product = this.state.items[index].name;
-        const baseURL = `http://localhost:3001/list/id/${target}`
-        axios.put(`${baseURL}`, this.state)
-        .then((res)=> {
-            this.setState({
-                
-
-            })
-        })
+    handleUpdate = (e) => {
+        e.preventDefault();
+        const list = {
+            title: this.state.title,
+            users: this.state.users,
+            items: []
+        };
+        for(let i = 1; i <= this.state.rows; i++){
+            if((this.state['item' + i]) && (this.state['quantity' + i])){
+                const item = {
+                    name: this.state['item' + i],
+                    quantity: this.state['quantity' + i],
+                    crossed: false
+                }
+                list.items.push(item);
+            }
+        }
+        if(this.state.title){
+            axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+            .then(() => history.push('/shopping-lists/' + this.findID())) 
+        }
     }
 
     //put route
-    deleteList = (index) => {
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // make it so the route removes the user from the model's user array
-        // on the back end add a conditional that deletes the model from the data base if the model's user array is empty 
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
-        // route to /shoping-lists via history.push('url')
+    deleteList = () => {
+        const list = {
+            title: this.state.title,
+            users: this.state.users,
+            items: this.state.items
+        }
+        const index = list.users.indexOf(this.props.username);
+        list.users.splice(index, 1);
+        if (list.users.length > 0) {
+            axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+            .then(() => history.push('/shopping-lists/'))
+            .then(response => console.log(response.data.confirm))
+        } else {
+            axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+            .then(response => console.log(response.data.confirm))
+            .then(() => history.push('/shopping-lists/'))
+        }
     }
 
     render () {
@@ -80,7 +100,7 @@ class Update extends Component {
             rows.push(
                 <div key={i}>
                     <input type="text" onChange={this.handleInput} value={this.state["name" + i]} placeholder="item name" id={"item" + i} />
-                    <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quanity" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quantity" + i} />
                 </div>
             )
         }
@@ -96,7 +116,7 @@ class Update extends Component {
                     </div>
                 </div>
 
-                <form handleSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div onClick={this.addInput}>+</div>
