@@ -122,7 +122,10 @@ class Update extends Component {
                     </div>     
                 </form>
 
-                <a href={"/shopping-lists/" + this.findID()}>Return to my list</a>
+                <div>
+                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                </div>
             </div>
         )
     }
