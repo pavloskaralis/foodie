@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import history from '../../history.js'
 import axios from 'axios'
 import './Update.css'
-import { number } from 'prop-types';
 
 class Update extends Component {
     state = {
@@ -30,7 +29,6 @@ class Update extends Component {
             this.setState(state)
         })
     }
-
 
     findID = () => {
         const url = window.location.href
@@ -86,10 +84,8 @@ class Update extends Component {
         if (list.users.length > 0) {
             axios.put('http://localhost:3001/list/id/' + this.findID(), list)
             .then(() => history.push('/shopping-lists/'))
-            .then(response => console.log(response.data.confirm))
         } else {
             axios.put('http://localhost:3001/list/id/' + this.findID(), list)
-            .then(response => console.log(response.data.confirm))
             .then(() => history.push('/shopping-lists/'))
         }
     }
@@ -126,6 +122,7 @@ class Update extends Component {
                     </div>     
                 </form>
 
+                <a href={"/shopping-lists/" + this.findID()}>Return to my list</a>
             </div>
         )
     }
