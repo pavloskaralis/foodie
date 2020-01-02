@@ -33,6 +33,3 @@ div[id$="quantity_"]{
 .plus:hover{
     color: var(--red);
 }
-.listItems{
-    color: var(--green)
-}

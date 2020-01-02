@@ -39,18 +39,18 @@ class Show extends Component {
         return (
             <div>
                 <div>
-                    <div>{this.state.title}</div>
-                    <div>
+                    <div className='header1'>{this.state.title}</div>
+                    <div className='description'>
                         You can manage your list here. <br/>
                         If you want to cross out an item use <span>X</span> <br/>
                         If you need to delete an item use <span>✓</span>
                     </div>
                 </div>
 
-                <div>
+                <div className='back'>
                     {this.state.items.map((item, index) => {
                         return (
-                            <div key={index}>
+                            <div className= 'container3' key={index}>
                                 <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
                                 <div onClick={()=> this.toggleCross(index)}>X</div>
                                 <div onClick={()=> this.deleteItem(index)}>✓</div>
@@ -59,7 +59,7 @@ class Show extends Component {
                     })}
                 </div>
 
-                <div>
+                <div addClass='container3'>
                     <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
                     <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
                     <a href="/shopping-lists/">Back To Shopping Lists</a>
