@@ -11,7 +11,7 @@
     
 }
 .footer{
-    color: black; 
+    color:var(--green); 
     padding: 0 0 0 20px; 
     font-family: 'Didact Gothic', sans-serif;
 }
