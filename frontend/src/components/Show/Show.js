@@ -64,9 +64,16 @@ class Show extends Component {
       // e.preventDefault();
       const target = this.findID();
       const baseURL = `http://localhost:3001/list/id/${target}`;
-      console.log(this.state.items[index])
-      axios.delete(`${baseURL}`)
-      .then()
+    //   const itemToDelete = this.state.items[index]
+      axios.delete(`${baseURL}`, index)
+        .then(data => {
+            this.setState({
+                items: [
+                    ...this.state.items.slice(0, index),
+                    ...this.state.items.slice(index + 1)
+                ]
+            })
+        })
         //use the index to target the specific item in the model's item array
         // this.findID() will retrieve the model's id for you
         // make it so only the item is removed from the model's item array
