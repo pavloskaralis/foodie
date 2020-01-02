@@ -7,7 +7,7 @@ class Show extends Component {
         title: '',
         users: [],
         items: []
-    } 
+    }
 
     componentDidMount = () => {
         axios.get('http://localhost:3001/list/id/' + this.findID())
@@ -28,22 +28,25 @@ class Show extends Component {
     //put route
     toggleCross = (index) => {
         const target = this.findID();
-        const product = this.state.items[index].name;
-        const baseURL = `http://localhost:3001/list/id/${target}`
+        const product = this.state.items[index];
+        const baseURL = `http://localhost:3001/list/id/${target}`;
+        const updatedState = {
+          ...this.state
+        }
+        console.log(updatedState);
+        updatedState.items[index].crossed = !updatedState.items[index].crossed;
+        this.setState({items: updatedState.items})//inside .then, send updatedState back
         axios.put(`${baseURL}`, this.state)
         .then((res) => {
-            const crossed = res.items.crossed;
-            this.setState({
-                crossed: !crossed
-            });
+            console.log(res);
             // res.items.crossed = !res.items.crossed;
         })
         .catch((err) => {
             console.log(err);
         })
-        
+
         // this.setState({
-            
+
         // }))
         // .then(res => this.setState)
         console.log(`${product}`);
@@ -51,16 +54,22 @@ class Show extends Component {
         // .then();
 
         //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you 
-        // change only the item's checked boolean 
+        // this.findID() will retrieve the model's id for you
+        // change only the item's checked boolean
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
-    //put route 
+    //put route
     deleteItem = (index) => {
+      // e.preventDefault();
+      const target = this.findID();
+      const baseURL = `http://localhost:3001/list/id/${target}`;
+      console.log(this.state.items[index])
+      axios.delete(`${baseURL}`)
+      .then()
         //use the index to target the specific item in the model's item array
         // this.findID() will retrieve the model's id for you
-        // make it so only the item is removed from the model's item array 
+        // make it so only the item is removed from the model's item array
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 

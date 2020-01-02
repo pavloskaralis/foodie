@@ -34,4 +34,12 @@ router.put('/id/:id', (req,res) =>{
       res.json(updatedList)
     })
 })
+router.delete('/id/:id', (req,res) =>{
+  List.findByIdAndRemove(req.params.id)
+  .then(lists => res.json({
+        username: req.params.username,
+        lists: lists
+    }));
+})
+// router.delete('/id/:id/:')
 module.exports = router;

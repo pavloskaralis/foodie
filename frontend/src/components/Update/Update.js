@@ -10,7 +10,7 @@ class Update extends Component {
         users: [],
         items: [],
         rows: ''
-    } 
+    }
 
     componentDidMount = () => {
         axios.get('http://localhost:3001/list/id/' + this.findID())
@@ -51,25 +51,45 @@ class Update extends Component {
     }
 
     //put route
-    handleSubmit = (index) => {
+    handleUpdate = (index) => {
+        index.preventDefault();
         const target = this.findID();
-        const product = this.state.items[index].name;
+        const updatedState = {
+          ...this.state
+        }
+        for(let i = 1; i <= this.state.rows; i++){
+          const updatedItem = {
+              name: this.state['name' + i],
+              quantity: this.state['quantity' + i],
+              crossed: false
+          }
+                // list.items.push(item);
+          console.log(this.state['name' + i]);
+          this.setState({name: updatedItem.name})
+          this.setState({quantity: updatedItem.quantity})
+        }
+        this.setState({list: updatedState.list})
         const baseURL = `http://localhost:3001/list/id/${target}`
         axios.put(`${baseURL}`, this.state)
         .then((res)=> {
-            this.setState({
-                
-
-            })
+            console.log(this.state)
         })
     }
 
     //put route
-    deleteList = (index) => {
+    deleteList = (e) => {
+      e.preventDefault();
+      const target = this.findID();
+      const baseURL = `http://localhost:3001/list/id/${target}`
+      axios.delete(`${baseURL}`)
+      .then((res)=>{
+
+      })
+
         //use the index to target the specific item in the model's item array
         // this.findID() will retrieve the model's id for you
         // make it so the route removes the user from the model's user array
-        // on the back end add a conditional that deletes the model from the data base if the model's user array is empty 
+        // on the back end add a conditional that deletes the model from the data base if the model's user array is empty
         // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
         // route to /shoping-lists via history.push('url')
     }
@@ -79,8 +99,8 @@ class Update extends Component {
         for(let i = 1; i <= this.state.rows; i ++){
             rows.push(
                 <div key={i}>
-                    <input type="text" onChange={this.handleInput} value={this.state["name" + i]} placeholder="item name" id={"item" + i} />
-                    <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quanity" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder={this.state["name" + i]} id={"name" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state.quantity} placeholder={this.state["quantity" + i]} id={"quanity" + i} />
                 </div>
             )
         }
@@ -92,18 +112,18 @@ class Update extends Component {
                     <div>
                         Update your list here. <br/>
                         Change the title, items, or quantity that needs to be bought. <br/>
-                        You can also add new items to your list. 
+                        You can also add new items to your list.
                     </div>
                 </div>
 
-                <form handleSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div onClick={this.addInput}>+</div>
                     <div>
                         <button type="submit">Submit Changes</button>
                         <button onClick={this.deleteList}>Delete List!!!</button>
-                    </div>     
+                    </div>
                 </form>
 
             </div>
