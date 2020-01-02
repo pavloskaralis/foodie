@@ -27,7 +27,7 @@ class Show extends Component {
         e.preventDefault();
         const list = {
             title: this.state.title,
-            users: [this.state.username],
+            users: [this.props.username],
             items: []
         };
         for(let i = 1; i <= this.state.rows; i++){

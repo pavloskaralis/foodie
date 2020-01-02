@@ -22,17 +22,14 @@ router.get('/id/:id', (req, res) => {
         items: list.items
     }));
 })
+
 router.post('/', (req,res) =>{
     List.create(req.body)
-    .then(list =>{console.log(list); res.json({list: list})})
+    .then(list => res.json({list: list}))
 })
+
 router.put('/id/:id', (req,res) =>{
-  List.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    (err, updatedList) => {
-      res.json(updatedList)
-    })
+ 
 })
 router.delete('/id/:id', (req,res) =>{
   List.findByIdAndRemove(req.params.id)

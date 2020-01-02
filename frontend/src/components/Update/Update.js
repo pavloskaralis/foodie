@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import history from '../../history.js'
 import axios from 'axios'
 import './Update.css'
-import { number } from 'prop-types';
 
 class Update extends Component {
     state = {
@@ -30,7 +29,6 @@ class Update extends Component {
             this.setState(state)
         })
     }
-
 
     findID = () => {
         const url = window.location.href
@@ -126,6 +124,10 @@ class Update extends Component {
                     </div>
                 </form>
 
+                <div>
+                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                </div>
             </div>
         )
     }

@@ -88,8 +88,8 @@ class Show extends Component {
                 <div>
                     {this.state.items.map((item, index) => {
                         return (
-                            <div>
-                                <div className={item.crossed ? "" : ""}>{item.name} — {item.quantity}</div>
+                            <div key={index}>
+                                <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
                                 <div onClick={()=> this.toggleCross(index)}>X</div>
                                 <div onClick={()=> this.deleteItem(index)}>✓</div>
                             </div>
@@ -99,8 +99,8 @@ class Show extends Component {
 
                 <div>
                     <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
                     <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                    <a href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
 
             </div>
