@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../../history.js'
 import axios from 'axios'
 import './Create.css'
 
@@ -15,17 +16,32 @@ class Show extends Component {
         item4: "",
         quantity4: "",
         item5: "",
-        quantity5: ""
+        quantity5: "",
     } 
+    
 
     //create route
     handleSubmit = (e) => {
         e.preventDefault();
-        //the data is dependant on how many input rows there are;
-        // therefor, you will need to define a variable to pass via axios;
-        // use a for loop to add properties to this data based on the amount of input rows;
-        // look at componentDidMount within the Update.js component on how this would look;
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        const list = {
+            title: this.state.title,
+            users: [this.props.username],
+            items: []
+        };
+        for(let i = 1; i <= this.state.rows; i++){
+            if((this.state['item' + i]) && (this.state['quantity' + i])){
+                const item = {
+                    name: this.state['item' + i],
+                    quantity: this.state['quantity' + i],
+                    crossed: false
+                }
+                list.items.push(item);
+            }
+        }
+        if(this.state.title){
+            axios.post('http://localhost:3001/list', list)
+            .then(() => history.push('/shopping-lists'))
+        }
     }
     
     handleInput = (e) => this.setState({[e.target.id]: e.target.value});
@@ -45,7 +61,7 @@ class Show extends Component {
             rows.push(
                 <div key={i}>
                     <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="item name" id={"item" + i}/>
-                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="quantity" id={"quanity" + i}/>
+                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder="quantity" id={"quantity" + i}/>
                 </div>
             )
         }
