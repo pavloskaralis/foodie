@@ -1,7 +1,7 @@
 
 .avocado {
    width: 50px; 
-   margin: 0 -15px 0 0;
+   margin: 0 -20px 0 0;
   
 }
 p{
@@ -10,12 +10,18 @@ p{
     color: var(--green);
     margin:0 auto;
     float: right;
-    margin: 0 0 0 -15px; 
+    margin: 4px 0 0 -18px; 
 }
 .containerNav{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr  1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    padding: 11px;
+    padding: 15px;
     align-items:center; 
+}
+.links{
+    color: var(--green);
+}
+.links:hover{
+    color: var(--blue);
 }

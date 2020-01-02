@@ -1,4 +1,17 @@
-.footer{
+.footerDiv{
     background-color: var(--green);
     padding: 30px;
+    display: grid; 
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: auto;
+    justify-items: start;
+    
+}
+.footer{
+    color: white; 
+    padding: 0 0 0 20px; 
+}
+.footer:hover{
+    color: var(--blue);
+    animation: ease-in;
 }
