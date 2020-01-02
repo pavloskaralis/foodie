@@ -1,0 +1,64 @@
+:root {
+    --green: #395C0D;
+    --red: #DB271F;
+    --blue: #4C5D81;
+    --daisy: #EDE7B3;
+}
+body {
+    margin: 0; 
+}
+
+div {
+    text-align: center;
+}
+.callToAction {
+    font-size: 30px;
+    font-family: 'Bungee Inline', cursive;
+    color:var(--red);
+    padding: 30px; 
+}
+.paragraph{
+    font-family: 'Didact Gothic', sans-serif;
+    padding: 10px;
+    font-size: 25px;
+
+}
+.container{
+    background-color: var(--daisy);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    padding: 0 30px 0 30px ;
+    width: 100%;
+    margin:30px 0 30px 0;
+    max-width: 2000px;
+    
+}
+img{
+    width: 100%;
+    height: auto;
+}
+.apple, .birthday, .share{
+    height: 100px;
+    width: auto;
+    filter: var(--blue);
+    padding: 35px 15px 15px 15px ;
+}
+.info{
+    color: black;
+    font-family: 'Didact Gothic', sans-serif;
+    padding: 15px 15px 30px 15px;
+    font-size: 20px;
+
+}
+.registration{
+    color: var(--blue);
+    font-family: 'Bungee Inline', cursive;
+    font-size: 25px;
+
+}
+.form-group{
+    margin: 0 auto;
+    width:50%;
+    padding: 15px;
+}
