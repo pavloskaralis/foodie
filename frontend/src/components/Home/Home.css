@@ -2,7 +2,7 @@
     --green: #395C0D;
     --red: #DB271F;
     --blue: #4C5D81;
-    --daisy: #EDE7B3;
+    --daisy: rgba(233, 220, 101, 0.692);
 }
 body {
     margin: 0; 
@@ -11,16 +11,18 @@ body {
 div {
     text-align: center;
 }
-.callToAction {
+.title {
     font-size: 30px;
     font-family: 'Bungee Inline', cursive;
     color:var(--red);
-    padding: 30px 0 0 0;
+    opacity: 60%;
+    margin: 60px 0 0 0;
 }
 .paragraph{
     font-family: 'Didact Gothic', sans-serif;
-    padding: 30px 0 0 0;
+    padding: 25px 0 0 0;
     font-size: 25px;
+    margin: 0 40px 0 40px;
 
 }
 .container{
@@ -39,7 +41,7 @@ img{
     height: auto;
 }
 .apple, .birthday, .share{
-    height: 100px;
+    height: 150px;
     width: auto;
     filter: var(--blue);
     padding: 30px 15px 15px 15px ;
@@ -48,7 +50,7 @@ img{
     color: black;
     font-family: 'Didact Gothic', sans-serif;
     padding: 15px 15px 30px 15px;
-    font-size: 20px;
+    font-size: 18px;
 
 }
 .registration{
@@ -84,3 +86,4 @@ button:hover{
 .click:hover{
     color: var(--blue);
 }
+

@@ -6,8 +6,10 @@
     display: grid;
     grid-template-columns: 2fr  1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
-    padding: 15px;
+    margin: 15px;
     align-items:center; 
+    border-bottom: gray .5px solid;
+    padding-bottom: 10px;
 }
 .links{
     color: var(--green);

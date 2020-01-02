@@ -42,9 +42,10 @@ class Home extends Component {
             </div>
 
             <div>
-                <div className='callToAction'>Grocerie Shopping Made Easy</div>
+                <div className='title'>Grocerie Shopping Made Easy</div>
+                
                 <div className='paragraph'>
-                    Forget about paper lists. Introducing Foodie an app that makes grocerie shopping convenient and easy.
+                    Forget about paper lists. Introducing Foodie an app that makes shopping convenient and easy.
                 </div>
                 <div className='paragraph'>
                     Foodie allows you to create, name, and share your shopping list with family and friends for any occasion.
@@ -65,7 +66,7 @@ class Home extends Component {
                         <img className='apple' src='https://img.icons8.com/carbon-copy/2x/apple.png'></img>
                     </div>
                     <div className='info'>
-                        Find food items that you’re looking for using Foodies intiuitive search engine.
+                        We don't stop at food :) Build a custom shopping list that meets your shopping needs.
                     </div>
                 </div>
                 <div>
@@ -73,7 +74,7 @@ class Home extends Component {
                         <img className='share' src='https://img.icons8.com/dotty/2x/left-and-right-arrows.png'></img>
                     </div>
                     <div className='info'>
-                        Share your shopping list with your friends and family.
+                        Make shopping easier. Share your shopping list with your friends and family. 
                     </div>
                 </div>
             </div>

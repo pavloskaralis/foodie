@@ -1,7 +1,9 @@
 .footerDiv{
-    background-color: var(--green);
-    opacity: 85%;
-    padding: 30px;
+    background-image:url(https://i.imgur.com/K9JXwBU.jpg), center;
+    min-height:100%;
+    border-top: gray .5px solid;
+    padding-top: 40px; 
+    margin: 30px 30px 0 30px;
     display: grid; 
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: auto;
@@ -9,7 +11,7 @@
     
 }
 .footer{
-    color: white; 
+    color: black; 
     padding: 0 0 0 20px; 
     font-family: 'Didact Gothic', sans-serif;
 }

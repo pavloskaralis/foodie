@@ -22,7 +22,7 @@ class Index extends Component {
             <div> 
                 
                 <div>
-                    <div className='header'>My Shopping Lists</div>
+                    <div className='header1'>My Shopping Lists</div>
                     <div className='description'>
                         Here are all of your shopping lists. <br/>
                         Click on the individual list to view, update, or share.
@@ -32,7 +32,7 @@ class Index extends Component {
                 <div className='container2'>
                     {this.state.lists.map(list => {
                         return(
-                            <a  className='listItems' href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
+                            <a  className='listItems1' href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
                         )
                     })}
                 </div>

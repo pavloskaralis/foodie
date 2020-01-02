@@ -1,7 +1,8 @@
-header{
+.header1{
     font-size: 30px;
     font-family: 'Bungee Inline', cursive;
-    color:var(--red);
+    color: var(--red);
+    opacity: 60%;
     padding: 30px; 
 }
 .description{
@@ -10,18 +11,23 @@ header{
     font-size: 21px;
 }
 .container2{
-    padding: 20px; 
+    padding: 24px; 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto; 
+    background-image: url(https://i.imgur.com/hj09Yuh.jpg);
+    
 }
 .newPost{
     color: white; 
 }
 .newPost:hover{
     color:white;
+    font-family: 'Didact Gothic', sans-serif;
 }
-.listItems{
-    color: var(--green);
+.listItems1{
+    color: var(--white);
     font-family: 'Bungee Inline', cursive;
+    font-size: 25px;
+    opacity: 100%;
 }
