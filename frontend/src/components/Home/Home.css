@@ -15,11 +15,11 @@ div {
     font-size: 30px;
     font-family: 'Bungee Inline', cursive;
     color:var(--red);
-    padding: 30px; 
+    padding: 30px 0 0 0;
 }
 .paragraph{
     font-family: 'Didact Gothic', sans-serif;
-    padding: 30px;
+    padding: 30px 0 0 0;
     font-size: 25px;
 
 }

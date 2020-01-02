@@ -38,7 +38,7 @@ class Home extends Component {
             <div className='banner' alt="banner"></div>
 
             <div>
-                <img src='https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-600w-722718097.jpg' />
+                <img src='https://i.imgur.com/S1ZyhWs.jpg' />
             </div>
 
             <div>

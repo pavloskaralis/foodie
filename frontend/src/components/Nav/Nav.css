@@ -1,16 +1,6 @@
 
 .avocado {
-   width: 50px; 
-   margin: 0 -20px 0 0;
-  
-}
-p{
-    font-family: 'Bungee Inline', cursive;
-    font-size: 30px;
-    color: var(--green);
-    margin:0 auto;
-    float: right;
-    margin: 4px 0 0 -18px; 
+   width: 150px;  
 }
 .containerNav{
     display: grid;
@@ -21,6 +11,7 @@ p{
 }
 .links{
     color: var(--green);
+    font-family: 'Didact Gothic', sans-serif;
 }
 .links:hover{
     color: var(--blue);
