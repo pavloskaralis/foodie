@@ -1,8 +1,8 @@
 :root {
-    --green: #395C0D;
-    --red: #d90823;
-    --blue: #4C5D81;
-    --daisy: #fce63fd2;
+    --green: #3db3ac;
+    --red: #ff1660f5;
+    --blue: #053aa6;
+    --daisy: #fbff14;
     --purple: #a46aa0;
     --teal: #014969;
 }
@@ -22,19 +22,19 @@ div {
     font-size: 30px;
     font-family: 'Bungee Inline', cursive;
     color:var(--red);
-    opacity: 60%;
     margin: 60px 0 60px 0;
 }
 
 .container{
-    background-color: var(--daisy);
+    background-color: var(--green);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
-    padding: 0 50px 0 50px ;
+    padding: 20px 50px 20px 50px;
     width: 100%;
     margin:30px 0 30px 0;
     max-width: 2000px;
+   
     
 }
 img{
@@ -42,16 +42,18 @@ img{
     height: auto;
 }
 .apple, .birthday, .share{
-    height: 150px;
+    height: 100px;
     width: auto;
     filter: var(--blue);
     padding: 30px 15px 15px 15px ;
 }
 .info{
-    color: black;
+    color: white;
     font-family: 'Didact Gothic', sans-serif;
-    padding: 20px;
+    padding: 10px;
     font-size: 18px;
+    text-align: left
+
 
 }
 .registration{
@@ -59,6 +61,7 @@ img{
     font-family: 'Bungee Inline', cursive;
     font-size: 25px;
     padding: 30px 0 30px 0; 
+    /* background-image: url(https://i.imgur.com/K9JXwBU.jpg?1); */
 
 }
 .form-group{
@@ -85,5 +88,10 @@ button{
 }
 .click:hover{
     color: var(--blue);
+}
+#signup{
+    background-image: url(https://i.imgur.com/jnBgbvk.jpg?1) center;
+    width: 100%;
+    height: auto;
 }
 
