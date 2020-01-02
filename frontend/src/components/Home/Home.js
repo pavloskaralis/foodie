@@ -38,16 +38,16 @@ class Home extends Component {
             <div className='banner' alt="banner"></div>
 
             <div>
-                <img src='https://i.imgur.com/S1ZyhWs.jpg' />
+                <img src='https://i.imgur.com/oSp3s1B.jpg' />
             </div>
 
             <div>
-                <div className='title'>Grocerie Shopping Made Easy</div>
+                <div className='title'>Shopping Made Easy</div>
                 
-                <div className='paragraph'>
+                <div className='description'>
                     Forget about paper lists. Introducing Foodie an app that makes shopping convenient and easy.
                 </div>
-                <div className='paragraph'>
+                <div className='description '>
                     Foodie allows you to create, name, and share your shopping list with family and friends for any occasion.
                 </div>
             </div>

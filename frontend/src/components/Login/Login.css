@@ -2,6 +2,7 @@
     font-size: 40px;
     font-family: 'Bungee Inline', cursive;
     color:var(--red);
+    opacity: 60%;
     padding: 30px; 
 }
 .background{

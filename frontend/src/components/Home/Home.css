@@ -1,8 +1,10 @@
 :root {
     --green: #395C0D;
-    --red: #DB271F;
+    --red: #d90823;
     --blue: #4C5D81;
-    --daisy: #ffd16e98;
+    --daisy: #fce63fd2;
+    --purple: #a46aa0;
+    --teal: #014969;
 }
 body {
     margin: 0; 
@@ -16,15 +18,9 @@ div {
     font-family: 'Bungee Inline', cursive;
     color:var(--red);
     opacity: 60%;
-    margin: 60px 0 0 0;
+    margin: 60px 0 60px 0;
 }
-.paragraph{
-    font-family: 'Didact Gothic', sans-serif;
-    padding: 25px 0 0 0;
-    font-size: 25px;
-    margin: 0 40px 0 40px;
 
-}
 .container{
     background-color: var(--daisy);
     display: grid;
@@ -49,7 +45,7 @@ img{
 .info{
     color: black;
     font-family: 'Didact Gothic', sans-serif;
-    padding: 15px 15px 30px 15px;
+    padding: 20px;
     font-size: 18px;
 
 }
