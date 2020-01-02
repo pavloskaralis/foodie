@@ -8,7 +8,7 @@ class Nav extends Component {
                 <div className='containerNav'>
                 
                     <div alt="avocado" ><img className='avocado' src='https://i.imgur.com/q9q2ROr.png' alt="avocado" /></div>
-                    <div></div>
+                    
                     
                 
                     {<a  className='links' href="/">Home</a>}

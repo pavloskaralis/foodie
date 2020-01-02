@@ -42,8 +42,8 @@ class Show extends Component {
                     <div className='header1'>{this.state.title}</div>
                     <div className='description'>
                         You can manage your list here. <br/>
-                        If you want to cross out an item use <span>X</span> <br/>
-                        If you need to delete an item use <span>✓</span>
+                        If you want to cross out an item use <span>✓</span> <br/>
+                        If you need to delete an item use <span>x</span>
                     </div>
                 </div>
 
@@ -52,8 +52,9 @@ class Show extends Component {
                         return (
                             <div className= 'container3' key={index}>
                                 <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
-                                <div onClick={()=> this.toggleCross(index)}>X</div>
                                 <div onClick={()=> this.deleteItem(index)}>✓</div>
+                                <div onClick={()=> this.toggleCross(index)}>X</div>
+                                
                             </div>
                         )
                     })}
