@@ -1,10 +1,14 @@
 
 .avocado {
-   width: 150px;  
+   width: 150px; 
+   
+}
+.containerNav.avocado{
+    align-self: start;
 }
 .containerNav{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     margin: 15px;
     align-items:center; 
@@ -18,3 +22,4 @@
 .links:hover{
     color: var(--blue);
 }
+

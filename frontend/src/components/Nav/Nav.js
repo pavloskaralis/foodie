@@ -7,7 +7,7 @@ class Nav extends Component {
             <nav>
                 <div className='containerNav'>
                 
-                    <div alt="avocado" ><img className='avocado' src='https://i.imgur.com/q9q2ROr.png' alt="avocado" /></div>
+                    <div alt="avocado" ><img className='avocado' src='https://i.imgur.com/G6GNCZ1.png' /></div>
                     
                     
                 
