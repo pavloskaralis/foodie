@@ -19,7 +19,7 @@ div {
 }
 .paragraph{
     font-family: 'Didact Gothic', sans-serif;
-    padding: 10px;
+    padding: 30px;
     font-size: 25px;
 
 }
@@ -42,7 +42,7 @@ img{
     height: 100px;
     width: auto;
     filter: var(--blue);
-    padding: 35px 15px 15px 15px ;
+    padding: 30px 15px 15px 15px ;
 }
 .info{
     color: black;
@@ -55,10 +55,32 @@ img{
     color: var(--blue);
     font-family: 'Bungee Inline', cursive;
     font-size: 25px;
+    padding: 30px 0 30px 0; 
 
 }
 .form-group{
     margin: 0 auto;
-    width:50%;
+    width:45%;
     padding: 15px;
+}
+button{
+    background-color: var(--blue);
+    color: white;
+    font-family: 'Didact Gothic', sans-serif;
+    border: none;
+    padding: 10px;
+    margin: 30px 0 30px 0;
+}
+button:hover{   
+    background-color: var(--green);
+}
+.ifMember{
+    font-family: 'Didact Gothic', sans-serif;
+    padding: 30px 0 30px 0; 
+}
+.click {
+    color: var(--red);
+}
+.click:hover{
+    color: var(--blue);
 }

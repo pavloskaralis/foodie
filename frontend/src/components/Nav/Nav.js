@@ -6,7 +6,7 @@ class Nav extends Component {
         return (
             <nav>
                 <div>
-                    <div></div>
+                    <div><img  class='avocado' src='https://img.icons8.com/color/2x/avocado.png'></img></div>
                     <div>Foodie</div>
                 </div>
                 <div>

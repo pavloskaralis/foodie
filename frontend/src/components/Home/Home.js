@@ -81,16 +81,16 @@ class Home extends Component {
                 {!this.props.isLoggedIn && <form onSubmit={this.handleSignUp} id="signup">
                     <div class = 'registration'>Register Account For Free</div>
                     <div class='form-group'>
-                    <input type="text" class="form-control"  value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
+                    <input type="text" class='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                     </div>
                     <div class='form-group'>
-                    <input type="text" class="form-control"  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
+                    <input type="text" class='form-control'  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
                     </div>
                     <button type="submit">Sign Up</button> 
                     {this.state.error ? <div>Username already exists.</div> : <div></div>}
                     <div class='ifMember'>
                         Already a member? <br/>
-                        Click <a href="/login">here</a> to log in.
+                        Click <a  class='click' href="/login">here</a> to log in.
                     </div>            
                 </form>}
             </div>
