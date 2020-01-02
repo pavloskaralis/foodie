@@ -16,6 +16,13 @@ router.get('/verify/:token', (req, res) => {
     .then(user => res.json({username: user.username}))
 })
 
+router.get('/share/:username', (req, res) => {
+    User.findOne({username: req.params.username}, (err, user) => {
+        const value = user ? true : false;
+        res.json({confirm: value});
+    })
+})
+
 router.post('/signup', (req, res) => {
     if (req.body.username && req.body.password) {
         let newUser = {

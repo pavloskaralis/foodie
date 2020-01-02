@@ -1,3 +1,21 @@
-.avocado{
-   size: 30px; 
+
+.avocado {
+   width: 50px; 
+   margin: 0 -15px 0 0;
+  
+}
+p{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 30px;
+    color: var(--green);
+    margin:0 auto;
+    float: right;
+    margin: 0 0 0 -15px; 
+}
+.containerNav{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    padding: 11px;
+    align-items:center; 
 }
