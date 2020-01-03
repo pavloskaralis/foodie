@@ -70,7 +70,7 @@ class Show extends Component {
             <div>
                 <div>
                     <div className='header1'>Create New List</div>
-                    <div className='description'>
+                    <div className='descriptionCreate'>
                         Give your list a name and add items below. <br/>
                         If you run out of room just use <span>+</span> to add more lines.
                     </div>
