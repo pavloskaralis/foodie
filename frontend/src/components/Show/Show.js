@@ -28,57 +28,45 @@ class Show extends Component {
     //put route
     toggleCross = (index) => {
         const target = this.findID();
-        const product = this.state.items[index];
         const baseURL = `http://localhost:3001/list/id/${target}`;
         const updatedState = {
           ...this.state
         }
-        console.log(updatedState);
         updatedState.items[index].crossed = !updatedState.items[index].crossed;
         this.setState({items: updatedState.items})//inside .then, send updatedState back
         axios.put(`${baseURL}`, this.state)
         .then((res) => {
             console.log(res);
-            // res.items.crossed = !res.items.crossed;
         })
         .catch((err) => {
             console.log(err);
         })
-
-        // this.setState({
-
-        // }))
-        // .then(res => this.setState)
-        console.log(`${product}`);
-        // .then(res => res)
-        // .then();
-
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // change only the item's checked boolean
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
     }
 
-    //put route
     deleteItem = (index) => {
-      // e.preventDefault();
-      const target = this.findID();
-      const baseURL = `http://localhost:3001/list/id/${target}`;
-    //   const itemToDelete = this.state.items[index]
-      axios.delete(`${baseURL}`, index)
+        const target = this.findID();
+        const baseURL = `http://localhost:3001/list/id/${target}`;        
+        const updatedState = {
+            items: [
+                ...this.state.items.slice(0, index),
+                ...this.state.items.slice(index + 1)
+            ]
+        }
+        axios.put(`${baseURL}`, updatedState)
         .then(data => {
-            this.setState({
-                items: [
-                    ...this.state.items.slice(0, index),
-                    ...this.state.items.slice(index + 1)
-                ]
-            })
+            window.location.reload(true)
         })
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // make it so only the item is removed from the model's item array
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
-    }
+        // if(this.state.items === 0){
+        //     axios.delete(`${baseURL}`)
+        //     .then(()=>{
+        //         window.location.assign('/shopping-lists')
+        //     })
+        // }
+            //use the index to target the specific item in the model's item array
+            // this.findID() will retrieve the model's id for you
+            // make it so only the item is removed from the model's item array
+            // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
+        }
 
     render () {
         return (

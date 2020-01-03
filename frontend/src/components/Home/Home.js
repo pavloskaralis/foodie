@@ -35,62 +35,62 @@ class Home extends Component {
     render () {
         return (
             <div>
-            <div class='banner' alt="banner"></div>
+            <div className='banner' alt="banner"></div>
 
             <div>
                 <img src='https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-600w-722718097.jpg' />
             </div>
 
             <div>
-                <div class='callToAction'>Grocerie Shopping Made Easy</div>
-                <div class='paragraph'>
+                <div className='callToAction'>Grocerie Shopping Made Easy</div>
+                <div className='paragraph'>
                     Forget about paper lists. Introducing Foodie an app that makes grocerie shopping convenient and easy.
                 </div>
-                <div class='paragraph'>
+                <div className='paragraph'>
                     Foodie allows you to create, name, and share your shopping list with family and friends for any occasion.
                 </div>
             </div>
 
-            <div class= 'container'>
+            <div className= 'container'>
                 <div>
                     <div alt="icon">
-                        <img class='birthday' src='https://img.icons8.com/dotty/2x/birthday.png'></img>
+                        <img className='birthday' src='https://img.icons8.com/dotty/2x/birthday.png'></img>
                     </div>
-                    <div class='info'>
+                    <div className='info'>
                         Create shopping lists for any occasion. No matter what it is we've got you covered!
                     </div>
                 </div>
                 <div>
                     <div alt="icon">
-                        <img class='apple' src='https://img.icons8.com/carbon-copy/2x/apple.png'></img>
+                        <img className='apple' src='https://img.icons8.com/carbon-copy/2x/apple.png'></img>
                     </div>
-                    <div class='info'>
+                    <div className='info'>
                         Find food items that you’re looking for using Foodies intiuitive search engine.
                     </div>
                 </div>
                 <div>
                     <div alt="icon">
-                        <img class='share' src='https://img.icons8.com/dotty/2x/left-and-right-arrows.png'></img>
+                        <img className='share' src='https://img.icons8.com/dotty/2x/left-and-right-arrows.png'></img>
                     </div>
-                    <div class='info'>
+                    <div className='info'>
                         Share your shopping list with your friends and family.
                     </div>
                 </div>
             </div>
           
             {!this.props.isLoggedIn && <form onSubmit={this.handleSignUp} id="signup">
-                <div class = 'registration'>Register Account For Free</div>
-                <div class='form-group'>
-                <input type="text" class='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
+                <div className = 'registration'>Register Account For Free</div>
+                <div className='form-group'>
+                <input type="text" className='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                 </div>
-                <div class='form-group'>
-                <input type="text" class='form-control'  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
+                <div className='form-group'>
+                <input type="text" className='form-control'  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
                 </div>
                 <button type="submit">Sign Up</button> 
                 {this.state.error ? <div>Username already exists.</div> : <div></div>}
-                <div class='ifMember'>
+                <div className='ifMember'>
                     Already a member? <br/>
-                    Click <a  class='click' href="/login">here</a> to log in.
+                    Click <a  className='click' href="/login">here</a> to log in.
                 </div>            
             </form>}
         </div>

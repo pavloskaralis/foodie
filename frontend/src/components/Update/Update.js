@@ -50,46 +50,42 @@ class Update extends Component {
 
     //put route
     handleUpdate = (index) => {
-        index.preventDefault();
+        // index.preventDefault();
         const target = this.findID();
+        const list = {
+            title: this.state.title,
+            users: [this.props.username],
+            items: []
+        };
+        for(let i = 1; i <= this.state.rows; i++){
+            if((this.state['item' + i]) || (this.state['quantity' + i])){
+                const updatedItem = {
+                    name: this.state['name' + i],
+                    quantity: this.state['quantity' + i],
+                    crossed: false
+                }
+            return updatedItem;
+            }
+            list.items.push(updatedItem)
+        }
         const updatedState = {
           ...this.state
         }
-        for(let i = 1; i <= this.state.rows; i++){
-          const updatedItem = {
-              name: this.state['name' + i],
-              quantity: this.state['quantity' + i],
-              crossed: false
-          }
-                // list.items.push(item);
-          console.log(this.state['name' + i]);
-          this.setState({name: updatedItem.name})
-          this.setState({quantity: updatedItem.quantity})
-        }
-        this.setState({list: updatedState.list})
         const baseURL = `http://localhost:3001/list/id/${target}`
-        axios.put(`${baseURL}`, this.state)
+        axios.put(`${baseURL}`, updatedState)
         .then((res)=> {
-            console.log(this.state)
+            window.location.reload(true)
         })
     }
 
-    //put route
     deleteList = (e) => {
       e.preventDefault();
       const target = this.findID();
       const baseURL = `http://localhost:3001/list/id/${target}`
       axios.delete(`${baseURL}`)
-      .then((res)=>{
-
+      .then(()=>{
+          window.location.assign('/shopping-lists')
       })
-
-        //use the index to target the specific item in the model's item array
-        // this.findID() will retrieve the model's id for you
-        // make it so the route removes the user from the model's user array
-        // on the back end add a conditional that deletes the model from the data base if the model's user array is empty
-        // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
-        // route to /shoping-lists via history.push('url')
     }
 
     render () {
