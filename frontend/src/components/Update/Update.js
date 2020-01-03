@@ -78,19 +78,19 @@ class Update extends Component {
                     </div>
                 </div>
 
-                <form onSubmit={this.handleUpdate}>
+                <form  onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
-                    <div onClick={this.addInput}>+</div>
+                    <div className='form2' onClick={this.addInput}>+</div>
                     <div>
                         <button className='button1' type="submit">Submit Changes</button>
-                        <button className='button2' onClick={this.deleteList}>Delete List!!!</button>
+                        <button className='button2' onClick={this.deleteList}>Delete List</button>
                     </div>     
                 </form>
 
-                <div>
-                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className='container4'>
+                    <a className='return' href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
             </div>
         )

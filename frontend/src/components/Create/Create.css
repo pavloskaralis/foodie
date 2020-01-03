@@ -15,9 +15,9 @@
     width: 41.5%;
     padding: 11px; 
 }
-div[id$="item_"]{
+div[id$="item"]{
     margin: 0 0 11px 0;
-    width: 45%;
+    width: 105%;
     padding: 11px; 
 }
 div[id$="quantity_"]{
@@ -34,4 +34,10 @@ div[id$="quantity_"]{
 }
 .plus:hover{
     color: var(--red);
+}
+.form-group.row{
+    margin: 50px;
+}
+div.div{
+    background-color: pink;
 }
