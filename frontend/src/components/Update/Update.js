@@ -57,26 +57,27 @@ class Update extends Component {
             users: [this.props.username],
             items: []
         };
-        for(let i = 1; i <= this.state.rows; i++){
-            if((this.state['item' + i]) || (this.state['quantity' + i])){
-                const updatedItem = {
-                    name: this.state['name' + i],
-                    quantity: this.state['quantity' + i],
-                    crossed: false
-                }
-            return updatedItem;
-            }
-            list.items.push(updatedItem)
-        }
-        const updatedState = {
-          ...this.state
-        }
-        const baseURL = `http://localhost:3001/list/id/${target}`
-        axios.put(`${baseURL}`, updatedState)
-        .then((res)=> {
-            window.location.reload(true)
-        })
     }
+    //     // for(let i = 1; i <= this.state.rows; i++){
+    //     //     if((this.state['item' + i]) || (this.state['quantity' + i])){
+    //     //         const updatedItem = {
+    //     //             name: this.state['name' + i],
+    //     //             quantity: this.state['quantity' + i],
+    //     //             crossed: false
+    //     //         }
+    //     //     return updatedItem;
+    //     //     }
+    //     //     list.items.push(updatedItem)
+    //     // }
+    //     // const updatedState = {
+    //     //   ...this.state
+    //     // }
+    //     const baseURL = `http://localhost:3001/list/id/${target}`
+    //     axios.put(`${baseURL}`, updatedState)
+    //     .then((res)=> {
+    //         window.location.reload(true)
+    //     })
+    // }
 
     deleteList = (e) => {
       e.preventDefault();
