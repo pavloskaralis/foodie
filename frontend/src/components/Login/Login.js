@@ -45,7 +45,7 @@ class Login extends Component {
                     <input type="text" className='form-control' value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
                     </div>
                     <button type="submit">LOG IN</button> 
-                    {this.state.error ? <div>Invalid username or password.</div> : <div></div>}
+                    {this.state.error ? <div>Invalid username or password.</div> : <div className="invis">Invisible text</div>}
                     <div className='members'>
                         Not a member yet? Not a problem. <br/>
                         Click <a href="/#signup">here</a> to create your free account.

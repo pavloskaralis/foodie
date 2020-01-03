@@ -98,3 +98,6 @@ button{
 }
 
 
+.invis {
+    opacity: 0;
+}

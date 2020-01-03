@@ -96,7 +96,7 @@ class Home extends Component {
                 <input type="text" className='form-control'  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
                 </div>
                 <button type="submit">SIGN UP</button> 
-                {this.state.error ? <div>Username already exists.</div> : <div></div>}
+                {this.state.error ? <div>Username already exists.</div> : <div className="invis">Invisible text</div>}
                 <div className='ifMember'>
                     Already a member? <br/>
                     Click <a  className='click' href="/login">here</a> to log in.
