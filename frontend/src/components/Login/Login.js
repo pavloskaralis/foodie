@@ -35,17 +35,23 @@ class Login extends Component {
     render () {
         return (
             <div>
+                <div className='background'>
                 <form onSubmit={this.handleLogIn}>
-                    <div>Member Log In</div>
-                    <input type="text" value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
-                    <input type="text" value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
-                    <button type="submit">Log In</button> 
+                    <div className='header'>Member Log In</div>
+                    <div className='form-group'>
+                    <input type="text" className='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
+                    </div>
+                    <div className='form-group'>
+                    <input type="text" className='form-control' value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
+                    </div>
+                    <button type="submit">LOG IN</button> 
                     {this.state.error ? <div>Invalid username or password.</div> : <div></div>}
-                    <div>
+                    <div className='members'>
                         Not a member yet? Not a problem. <br/>
                         Click <a href="/#signup">here</a> to create your free account.
                     </div>            
                 </form>
+                </div>
             </div>
         )
     }

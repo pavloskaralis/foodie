@@ -5,15 +5,17 @@ class Nav extends Component {
     render () {
         return (
             <nav>
-                <div>
-                    <div></div>
-                    <div>Foodie</div>
-                </div>
-                <div>
-                    {<a href="/">Home</a>}
-                    {this.props.isLoggedIn ? <a href="/shopping-lists">Shopping Lists</a> : <a href="/login">Log In</a>}
-                    {this.props.isLoggedIn && <a href="/new-list">New List</a>}
-                    {this.props.isLoggedIn ? <a href="/" onClick={this.props.handleLogOut}>Log Out</a> : <a href="/#signup">Register</a> }
+                <div className='containerNav'>
+                
+                    <div alt="avocado" ><img className='avocado' src='https://i.imgur.com/G6GNCZ1.png' /></div>
+                    
+                    
+                
+                    {<a  className='links' href="/">Home</a>}
+                    {this.props.isLoggedIn ? <a className='links' href="/shopping-lists">Shopping Lists</a> : <a className='links' href="/login">Log In</a>}
+                    {this.props.isLoggedIn && <a className='links' href="/new-list">New List</a>}
+                    {this.props.isLoggedIn ? <a className='links' href="/" onClick={this.props.handleLogOut}>Log Out</a> : <a className='links' href="/#signup">Register</a> }
+                
                 </div>
             </nav>
         )
