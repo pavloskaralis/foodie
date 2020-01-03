@@ -30,15 +30,17 @@ class Index extends Component {
                 </div>
 
                 <div className='container2'>
+                <div className="row">
                     {this.state.lists.map(list => {
                         return(
-                            <a  className='listItems1' href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
+                            <a  className="col-sm" id='listItems1' href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
                         )
                     })}
                 </div>
+                </div>
 
                 <div>
-                    <button><a className='newPost' href="/new-list">Add New List</a></button>
+                    <button className='button2'><a className='newPost' href="/new-list">Add New List</a></button>
                 </div>
 
             </div>

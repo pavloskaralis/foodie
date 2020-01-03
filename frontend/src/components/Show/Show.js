@@ -52,18 +52,22 @@ class Show extends Component {
                         return (
                             <div className= 'container3' key={index}>
                                 <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
-                                <div onClick={()=> this.deleteItem(index)}>✓</div>
-                                <div onClick={()=> this.toggleCross(index)}>X</div>
+                                <div className='complete' onClick={()=> this.toggleCross(index)}>√</div>
+                                <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>
+                                
                                 
                             </div>
                         )
                     })}
                 </div>
 
-                <div addClass='container3'>
-                    <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
-                    <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className='header1'>
+                    Return To ...
+                </div>
+                <div className='container4'>
+                    <a className='return' href={"/share-list/" + this.findID()}>Share Shopping List</a>
+                    <a className='return' href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                    <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
 
             </div>

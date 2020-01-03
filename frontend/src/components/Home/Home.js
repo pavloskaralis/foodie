@@ -54,7 +54,7 @@ class Home extends Component {
 
             <div className= 'container-fluid'>
             <div className='row'> 
-                <div class="col-xs-6 col-sm-4">
+                <div className="col-xs-6 col-sm-4">
                     <div alt="icon">
                         <img className='birthday' src='https://i.imgur.com/7AffIid.png'></img>
                     </div>
@@ -62,7 +62,7 @@ class Home extends Component {
                         Create shopping lists for any occasion. No matter what it is we've got you covered!
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-4">
+                <div className="col-xs-6 col-sm-4">
                     <div alt="icon">
                         <img className='apple' src='https://i.imgur.com/jjobpii.png'></img>
                     </div>
@@ -71,7 +71,7 @@ class Home extends Component {
                     </div>
                 </div>
                
-                <div class="col-xs-6 col-sm-4">
+                <div className="col-xs-6 col-sm-4">
                     <div alt="icon">
                         <img className='share' src='https://i.imgur.com/qDSeTtP.png'></img>
                     </div>
@@ -82,8 +82,9 @@ class Home extends Component {
                 </div>
             </div>
             <div>
-            <div className='description'>
-            You're running to the store after work but realize you left your list at home (ugh). Instead of standing in the dairy aisle wondering how much milk you have left, next time use your phone as your personal grocery shopping assistant. The newest and latest grocery shopping list apps take out all the work for you.
+            <div className='description2'>
+            You're running to the store after work but realize you left your list at home (ugh). <br></br>
+            Instead of standing in the dairy aisle wondering how much milk you have left, next time use your phone as your personal grocery shopping assistant.<br></br> The newest and latest grocery shopping list apps take out all the work for you.
                 </div>
                 
             </div>

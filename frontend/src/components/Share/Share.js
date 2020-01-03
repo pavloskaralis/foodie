@@ -77,10 +77,10 @@ class Share extends Component {
             }
         }
         return (
-            <div>
+            <div id='signup'>
                 <div>
-                    <div>Share List</div>
-                    <div>
+                    <div className='title'> Share List</div>
+                    <div className='description'>
                         Share your list with friends by adding their username. <br/>
                         This list is currently viewable by: <br/>
                         {shared}
@@ -93,9 +93,9 @@ class Share extends Component {
                     {this.state.result && <div>{this.state.result}</div>} 
                 </form>
 
-                <div>
-                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className='container4'>
+                    <a  className='return' href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
             </div>
         )

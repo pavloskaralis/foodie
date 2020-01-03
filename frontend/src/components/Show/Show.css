@@ -6,11 +6,35 @@
     grid-template-rows: auto;
     justify-items: start;
     font-family: 'Bungee Inline', cursive;
-    color: rgb(104, 100, 100);
+    color: white;
     margin: 20px 40px 20px 40px;
 }
 .back{
-    background: var(--daisy);
+    background: var(--green);
     padding: 30px;
 }
 
+.complete{
+    color: var(--daisy)
+}
+.delete{
+    color:var(--red)
+}
+.container4{
+    display: grid;
+    padding-bottom: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    font-family: 'Bungee Inline', cursive;
+    color: white;
+    padding: 0 50px 50px 50px;
+}
+.return{
+    padding: 10px;
+    color: gray;
+}
+.return:hover{
+    background-color: var(--red);
+    color: white;
+}
