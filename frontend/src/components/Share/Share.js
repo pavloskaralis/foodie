@@ -48,8 +48,8 @@ class Share extends Component {
             axios.get('http://localhost:3001/user/share/' + this.state.username)
             .then(response => {
                 if (response.data.confirm){
-                    list.users.push(this.state.username);
-                    axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+                    const updatedUsers = [...list.users, this.state.username];
+                    axios.put('http://localhost:3001/list/id/' + this.findID(), {...list, users: updatedUsers})
                     .then(response => this.setState({
                         users: response.data.users,
                         username: '',

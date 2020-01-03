@@ -84,11 +84,9 @@ class Show extends Component {
                         {this.state.items.map((item, index) => {
                             return (
                                 <div className= 'container3' key={index}>
-                                    <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
+                                    <div className={item.crossed ? "strike" : ""}>{item.name} — {item.quantity}</div>
                                     <div className='complete' onClick={()=> this.toggleCross(index)}>√</div>
-                                    <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>
-                                    
-                                    
+                                    <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>  
                                 </div>
                             )
                         })}

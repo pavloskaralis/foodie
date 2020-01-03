@@ -38,3 +38,7 @@
     background-color: var(--red);
     color: white;
 }
+.strike{
+    color: var(--red);
+    opacity: .5;
+}

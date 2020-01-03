@@ -48,45 +48,50 @@ class Update extends Component {
         })
     }
 
-    //put route
-    handleUpdate = (index) => {
-        // index.preventDefault();
-        const target = this.findID();
+   //put route
+   handleUpdate = (e) => {
+        e.preventDefault();
         const list = {
             title: this.state.title,
-            users: [this.props.username],
-            items: []
+            users: this.state.users,
+            items: this.state.items
         };
+        const updatedItems = []; 
+        for(let i = 1; i <= this.state.rows; i++){
+            if((this.state['item' + i]) && (this.state['quantity' + i])){
+                const item = {
+                    name: this.state['item' + i],
+                    quantity: this.state['quantity' + i],
+                    crossed: false
+                }
+                updatedItems.push(item);
+            }
+        }
+        if(this.state.title){
+            axios.put('http://localhost:3001/list/id/' + this.findID(), {...list,items: updatedItems})
+            .then(() => history.push('/shopping-lists/' + this.findID())) 
+        }
     }
-    //     // for(let i = 1; i <= this.state.rows; i++){
-    //     //     if((this.state['item' + i]) || (this.state['quantity' + i])){
-    //     //         const updatedItem = {
-    //     //             name: this.state['name' + i],
-    //     //             quantity: this.state['quantity' + i],
-    //     //             crossed: false
-    //     //         }
-    //     //     return updatedItem;
-    //     //     }
-    //     //     list.items.push(updatedItem)
-    //     // }
-    //     // const updatedState = {
-    //     //   ...this.state
-    //     // }
-    //     const baseURL = `http://localhost:3001/list/id/${target}`
-    //     axios.put(`${baseURL}`, updatedState)
-    //     .then((res)=> {
-    //         window.location.reload(true)
-    //     })
-    // }
 
     deleteList = (e) => {
-      e.preventDefault();
-      const target = this.findID();
-      const baseURL = `http://localhost:3001/list/id/${target}`
-      axios.delete(`${baseURL}`)
-      .then(()=>{
-          window.location.assign('/shopping-lists')
-      })
+        e.preventDefault();
+        const list = {
+            title: this.state.title,
+            users: this.state.users,
+            items: this.state.items
+        }
+        const index = list.users.indexOf(this.props.username);
+        const updatedUsers = [...list.users.slice(0,index), ...list.users.slice(index + 1)];
+        //if shared, only removes user as to not delete for other users
+        if (updatedUsers.length > 0) {
+            console.log('removing')
+            axios.put('http://localhost:3001/list/id/' + this.findID(), {...list,users: updatedUsers})
+            .then(() => history.push('/shopping-lists/'))
+        } else {
+            console.log('deleting')
+            axios.delete('http://localhost:3001/list/id/' + this.findID())
+            .then(() => history.push('/shopping-lists/'))
+        }
     }
 
     render () {
