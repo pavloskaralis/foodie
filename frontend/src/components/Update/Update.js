@@ -48,8 +48,8 @@ class Update extends Component {
         })
     }
 
-   //put route
-   handleUpdate = (e) => {
+    //put route
+    handleUpdate = (e) => {
         e.preventDefault();
         const list = {
             title: this.state.title,
@@ -120,16 +120,16 @@ class Update extends Component {
                 <form onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
-                    <div onClick={this.addInput}>+</div>
+                    <div className="plus" onClick={this.addInput}>+</div>
                     <div>
                         <button className='button1' type="submit">Submit Changes</button>
                         <button className='button2' onClick={this.deleteList}>Delete List!!!</button>
                     </div>     
                 </form>
 
-                <div>
-                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className="container4">
+                    <a className="return" href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a className="return" href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
             </div>
         )

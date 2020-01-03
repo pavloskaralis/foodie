@@ -15,10 +15,15 @@
 }
 
 .complete{
-    color: var(--daisy)
+    color: var(--daisy);
+    font-weight: 900;
+    font-size: 24px;
+    cursor: pointer;
 }
 .delete{
-    color:var(--red)
+    color:var(--red);
+    font-size: 24px;
+    cursor: pointer;
 }
 .container4{
     display: grid;
