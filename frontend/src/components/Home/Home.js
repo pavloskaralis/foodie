@@ -15,21 +15,23 @@ class Home extends Component {
 
     handleSignUp = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/user/signup', {
-            username: this.state.username,
-            password: this.state.password
-        }).then(response => {
-            localStorage.token = response.data.token;
-            this.setState({
-                username: '',
-                password: ''
-            });
-            history.push("/shopping-lists");
-            this.props.resetApp();
-        }).catch(err => {
-            console.log(err);
-            this.setState({error: true})
-        })
+        if(this.state.username && this.state.password){
+            axios.post('http://localhost:3001/user/signup', {
+                username: this.state.username,
+                password: this.state.password
+            }).then(response => {
+                localStorage.token = response.data.token;
+                this.setState({
+                    username: '',
+                    password: ''
+                });
+                history.push("/shopping-lists");
+                this.props.resetApp();
+            }).catch(err => {
+                console.log(err);
+                this.setState({error: true})
+            })
+        }
     }
 
     render () {
