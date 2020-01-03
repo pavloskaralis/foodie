@@ -4,3 +4,11 @@
         padding: 0px 50px 50px 50px; 
         font-size: 21px;
     }
+.plus{
+    color: var(--green);
+    font-family: 'Bungee Inline', cursive;
+    font-size: 40px;
+}
+.plus:hover{
+    color:var(--red);
+}

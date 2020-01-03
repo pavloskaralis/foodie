@@ -79,7 +79,7 @@ class Show extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
-                    <div onClick={this.addInput}>+</div>
+                    <div className='plus' onClick={this.addInput}>+</div>
                     <button type="submit">Create List</button>
                 </form>
 
