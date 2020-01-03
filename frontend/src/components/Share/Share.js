@@ -90,7 +90,7 @@ class Share extends Component {
                 <form onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.username} placeholder="username" id="username"/>
                     <button type="submit">Submit Changes</button>   
-                    {this.state.result && <div>{this.state.result}</div>} 
+                    {this.state.result ? <div>{this.state.result}</div> : <div className="invis">invisible text</div>} 
                 </form>
 
                 <div className='container4'>
