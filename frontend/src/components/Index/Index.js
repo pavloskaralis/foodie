@@ -22,23 +22,27 @@ class Index extends Component {
             <div> 
                 
                 <div>
-                    <div>My Shopping Lists</div>
-                    <div>
+                    <div className='header1'>My Shopping Lists</div>
+                    <div className='description'>
                         Here are all of your shopping lists. <br/>
                         Click on the individual list to view, update, or share.
                     </div>
                 </div>
 
-                <div>
+                <div className='container2'>
+               
                     {this.state.lists.map(list => {
                         return(
-                            <a href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
+                            <div className="row">
+                            <a className="col-md" id='listItems1' href={"/shopping-lists/" + list._id} key={list._id}>{list.title}</a>
+                            </div>
                         )
                     })}
+                
                 </div>
 
                 <div>
-                    <a href="/new-list">Create New List</a>
+                    <button className='button2'><a className='newPost' href="/new-list">Add New List</a></button>
                 </div>
 
             </div>

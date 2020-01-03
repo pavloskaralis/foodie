@@ -9,22 +9,20 @@ class Update extends Component {
         users: [],
         items: [],
         rows: ''
-    } 
+    }
 
     componentDidMount = () => {
         axios.get('http://localhost:3001/list/id/' + this.findID())
-        .then(response => this.setState({
-            title: response.data.title,
-            users: response.data.users,
-            items: response.data.items,
-        })).then(() => {
-            const rows = this.state.items.length;
+        .then(response => {
             const state = {
-                rows: rows
+                title: response.data.title,
+                users: response.data.users,
+                items: response.data.items,
+                rows: response.data.items.length
             }
-            for(let i = 1; i <= rows; i ++){
-                state['name' + i] = this.state.items[i - 1].name;
-                state['quantity' + i] = this.state.items[i - 1].quantity;
+            for(let i = 1; i <= state.rows; i ++){
+                state['item' + i] = state.items[i - 1].name;
+                state['quantity' + i] = state.items[i - 1].quantity;
             }
             this.setState(state)
         })
@@ -50,10 +48,49 @@ class Update extends Component {
 
     //put route
     handleUpdate = (e) => {
+        e.preventDefault();
+        const list = {
+            title: this.state.title,
+            users: this.state.users,
+            items: this.state.items
+        };
+        const updatedItems = []; 
+        for(let i = 1; i <= this.state.rows; i++){
+            if((this.state['item' + i]) && (this.state['quantity' + i])){
+                const item = {
+                    name: this.state['item' + i],
+                    quantity: this.state['quantity' + i],
+                    crossed: false
+                }
+                updatedItems.push(item);
+            }
+        }
+        if(this.state.title){
+            axios.put('http://localhost:3001/list/id/' + this.findID(), {...list,items: updatedItems})
+            .then(() => history.push('/shopping-lists/' + this.findID())) 
+        }
     }
 
-    //put route
-    deleteList = () => {
+    //put or delete route  (conditional)
+    deleteList = (e) => {
+        e.preventDefault();
+        const list = {
+            title: this.state.title,
+            users: this.state.users,
+            items: this.state.items
+        }
+        const index = list.users.indexOf(this.props.username);
+        const updatedUsers = [...list.users.slice(0,index), ...list.users.slice(index + 1)];
+        //if shared, only removes user as to not delete for other users
+        if (updatedUsers.length > 0) {
+            console.log('removing')
+            axios.put('http://localhost:3001/list/id/' + this.findID(), {...list,users: updatedUsers})
+            .then(() => history.push('/shopping-lists/'))
+        } else {
+            console.log('deleting')
+            axios.delete('http://localhost:3001/list/id/' + this.findID())
+            .then(() => history.push('/shopping-lists/'))
+        }
     }
 
     render () {
@@ -61,7 +98,7 @@ class Update extends Component {
         for(let i = 1; i <= this.state.rows; i ++){
             rows.push(
                 <div key={i}>
-                    <input type="text" onChange={this.handleInput} value={this.state["name" + i]} placeholder="item name" id={"item" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state["item" + i]} placeholder="item name" id={"item" + i} />
                     <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quantity" + i} />
                 </div>
             )
@@ -70,31 +107,32 @@ class Update extends Component {
         return (
             <div>
                 <div>
-                    <div>Update List</div>
-                    <div>
+                    <div className='header1'>Update List</div>
+                    <div className='descriptionCreate'>
                         Update your list here. <br/>
                         Change the title, items, or quantity that needs to be bought. <br/>
                         You can also add new items to your list. 
                     </div>
                 </div>
 
-                <form onSubmit={this.handleUpdate}>
+                <form  onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
-                    <div onClick={this.addInput}>+</div>
+                    <div className="plus" onClick={this.addInput}>+</div>
                     <div>
-                        <button type="submit">Submit Changes</button>
-                        <button onClick={this.deleteList}>Delete List!!!</button>
+                        <button className='button1' type="submit">Submit Changes</button>
+                        <button className='button2' onClick={this.deleteList}>Delete List</button>
                     </div>     
                 </form>
 
-                <div>
-                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className="container4">
+                    <a className="return" href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a className="return" href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
             </div>
         )
     }
 }
+
 
 export default Update

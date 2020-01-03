@@ -15,82 +15,93 @@ class Home extends Component {
 
     handleSignUp = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/user/signup', {
-            username: this.state.username,
-            password: this.state.password
-        }).then(response => {
-            localStorage.token = response.data.token;
-            this.setState({
-                username: '',
-                password: ''
-            });
-            history.push("/shopping-lists");
-            this.props.resetApp();
-        }).catch(err => {
-            console.log(err);
-            this.setState({error: true})
-        })
+        if(this.state.username && this.state.password){
+            axios.post('http://localhost:3001/user/signup', {
+                username: this.state.username,
+                password: this.state.password
+            }).then(response => {
+                localStorage.token = response.data.token;
+                this.setState({
+                    username: '',
+                    password: ''
+                });
+                history.push("/shopping-lists");
+                this.props.resetApp();
+            }).catch(err => {
+                console.log(err);
+                this.setState({error: true})
+            })
+        }
     }
 
     render () {
         return (
             <div>
-            <div class='banner' alt="banner"></div>
-
             <div>
-                <img src='https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-600w-722718097.jpg' />
+                <img src='https://i.imgur.com/oSp3s1B.jpg' alt="banner"/>
             </div>
 
             <div>
-                <div class='callToAction'>Grocerie Shopping Made Easy</div>
-                <div class='paragraph'>
-                    Forget about paper lists. Introducing Foodie an app that makes grocerie shopping convenient and easy.
+                <div className='title'>Shopping Made Easy</div>
+                
+                <div className='description'>
+                    Forget about paper lists. Introducing Foodie an app that makes shopping convenient and easy.
                 </div>
-                <div class='paragraph'>
+                <div className='description2'>
                     Foodie allows you to create, name, and share your shopping list with family and friends for any occasion.
                 </div>
             </div>
 
-            <div class= 'container'>
-                <div>
-                    <div alt="icon">
-                        <img class='birthday' src='https://img.icons8.com/dotty/2x/birthday.png'></img>
+            <div className= 'container'>
+            <div className='row'> 
+                <div className="col-xs-6 col-sm-4">
+                    <div>
+                        <img className='birthday' src='https://i.imgur.com/7AffIid.png' alt="icon"></img>
                     </div>
-                    <div class='info'>
+                    <div className='info'>
                         Create shopping lists for any occasion. No matter what it is we've got you covered!
                     </div>
                 </div>
-                <div>
-                    <div alt="icon">
-                        <img class='apple' src='https://img.icons8.com/carbon-copy/2x/apple.png'></img>
+                <div className="col-xs-6 col-sm-4">
+                    <div>
+                        <img className='apple' src='https://i.imgur.com/jjobpii.png' alt="icon"></img>
                     </div>
-                    <div class='info'>
-                        Find food items that you’re looking for using Foodies intiuitive search engine.
-                    </div>
-                </div>
-                <div>
-                    <div alt="icon">
-                        <img class='share' src='https://img.icons8.com/dotty/2x/left-and-right-arrows.png'></img>
-                    </div>
-                    <div class='info'>
-                        Share your shopping list with your friends and family.
+                    <div className='info'>
+                        We don't stop at food :) Build a custom shopping list that meets your shopping needs.
                     </div>
                 </div>
+               
+                <div className="col-xs-6 col-sm-4">
+                    <div>
+                        <img className='share' src='https://i.imgur.com/qDSeTtP.png' alt="icon"></img>
+                    </div>
+                    <div className='info'>
+                        Make shopping easier. Share your shopping list with your friends and family. 
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div>
+            <div className='description2'>
+            You're running to the store after work but realize you left your list at home (ugh). <br></br>
+            Instead of standing in the dairy aisle wondering how much milk you have left, next time use your phone as your personal grocery shopping assistant.<br></br> The newest and latest grocery shopping list apps take out all the work for you.
+                </div>
+                
             </div>
           
             {!this.props.isLoggedIn && <form onSubmit={this.handleSignUp} id="signup">
-                <div class = 'registration'>Register Account For Free</div>
-                <div class='form-group'>
-                <input type="text" class='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
+                <div className = 'registration'>Create Free Account</div>
+                <div className='form-group'>
+                <input type="text" className='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                 </div>
-                <div class='form-group'>
-                <input type="text" class='form-control'  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
+                <div className='form-group'>
+                <input type="text" className='form-control'  value={this.state.password} onChange={this.handleInput} placeholder="password" id="password"/>
                 </div>
-                <button type="submit">Sign Up</button> 
-                {this.state.error ? <div>Username already exists.</div> : <div></div>}
-                <div class='ifMember'>
+                <button type="submit">SIGN UP</button> 
+                {this.state.error ? <div>Username already exists.</div> : <div className="invis">Invisible text</div>}
+                <div className='ifMember'>
                     Already a member? <br/>
-                    Click <a  class='click' href="/login">here</a> to log in.
+                    Click <a  className='click' href="/login">here</a> to log in.
                 </div>            
             </form>}
         </div>

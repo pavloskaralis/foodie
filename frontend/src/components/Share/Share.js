@@ -48,8 +48,8 @@ class Share extends Component {
             axios.get('http://localhost:3001/user/share/' + this.state.username)
             .then(response => {
                 if (response.data.confirm){
-                    list.users.push(this.state.username);
-                    axios.put('http://localhost:3001/list/id/' + this.findID(), list)
+                    const updatedUsers = [...list.users, this.state.username];
+                    axios.put('http://localhost:3001/list/id/' + this.findID(), {...list, users: updatedUsers})
                     .then(response => this.setState({
                         users: response.data.users,
                         username: '',
@@ -77,25 +77,25 @@ class Share extends Component {
             }
         }
         return (
-            <div>
+            <div id='signup'>
                 <div>
-                    <div>Share List</div>
-                    <div>
+                    <div className='title'> Share List</div>
+                    <div className='description'>
                         Share your list with friends by adding their username. <br/>
                         This list is currently viewable by: <br/>
                         {shared}
-                    </div>
+                    </div> 
                 </div>
 
                 <form onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.username} placeholder="username" id="username"/>
                     <button type="submit">Submit Changes</button>   
-                    {this.state.result && <div>{this.state.result}</div>} 
+                    {this.state.result ? <div>{this.state.result}</div> : <div className="invis">invisible text</div>} 
                 </form>
 
-                <div>
-                    <a href={"/shopping-lists/" + this.findID()}>Return To My List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className='container4'>
+                    <a  className='return' href={"/shopping-lists/" + this.findID()}>Return To My List</a>
+                    <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
             </div>
         )

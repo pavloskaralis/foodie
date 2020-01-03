@@ -7,7 +7,7 @@ class Show extends Component {
         title: '',
         users: [],
         items: []
-    } 
+    }
 
     componentDidMount = () => {
         axios.get('http://localhost:3001/list/id/' + this.findID())
@@ -27,47 +27,67 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-
+        const updatedItem = {
+            name: this.state.items[index].name,
+            quantity: this.state.items[index].quantity,
+            crossed: !this.state.items[index].crossed
+        }
+        const updatedItems = [
+            ...this.state.items.slice(0, index), 
+            updatedItem, 
+            ...this.state.items.slice(index + 1)
+        ];
+        axios.put('http://localhost:3001/list/id/' + this.findID(), {...this.state, items: updatedItems})
+        .then(response => this.setState({items:response.data.items}));
     }
 
-    //put route 
+    //put route
     deleteItem = (index) => {
-        
+        const updatedItems = [
+            ...this.state.items.slice(0,index), 
+            ...this.state.items.slice(index + 1)
+        ];
+        axios.put('http://localhost:3001/list/id/' + this.findID(), {...this.state,items: updatedItems})
+        .then(response => this.setState({items:response.data.items}));
     }
 
     render () {
         return (
             <div>
                 <div>
-                    <div>{this.state.title}</div>
-                    <div>
+                    <div className='header1'>{this.state.title}</div>
+                    <div className='descriptionCreate'>
                         You can manage your list here. <br/>
-                        If you want to cross out an item use <span>X</span> <br/>
-                        If you need to delete an item use <span>✓</span>
+                        If you want to cross out an item use <span>✓</span> <br/>
+                        If you need to delete an item use <span>x</span>
                     </div>
                 </div>
 
-                <div>
+                <div className='back'>
                     {this.state.items.map((item, index) => {
                         return (
-                            <div key={index}>
-                                <div className={item.crossed ? "test" : ""}>{item.name} — {item.quantity}</div>
-                                <div onClick={()=> this.toggleCross(index)}>X</div>
-                                <div onClick={()=> this.deleteItem(index)}>✓</div>
+                            <div className= 'container3' key={index}>
+                                <div className={item.crossed ? "strike" : ""}>{item.name} — {item.quantity}</div>
+                                <div className='complete' onClick={()=> this.toggleCross(index)}>✓</div>
+                                <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>  
                             </div>
                         )
                     })}
                 </div>
 
-                <div>
-                    <a href={"/share-list/" + this.findID()}>Share Shopping List</a>
-                    <a href={"/update-list/" + this.findID()}>Update Shopping List</a>
-                    <a href="/shopping-lists/">Back To Shopping Lists</a>
+                <div className='header1'>
+                    Return To 
+                </div>
+                <div className='container4'>
+                    <a className='return' href={"/share-list/" + this.findID()}>Share Shopping List</a>
+                    <a className='return' href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                    <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
                 </div>
 
             </div>
         )
     }
 }
+    
 
 export default Show
