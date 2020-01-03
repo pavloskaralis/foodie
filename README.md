@@ -10,55 +10,20 @@ The Foodie app allows users to create shopping lists tied to a user account. Lis
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-
-
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
-
-> Tips
-
-- HAVE WHITE SPACE
-- MAKE IT PRETTY
-- GIFS ARE REALLY COOL
----
-
-## Table of Contents (Optional)
-
-> If your `README` has a lot of info, section headers might be nice.
-
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
-
-
----
-
-## Example (Optional)
-
-
-
----
-
-## Installation
-
-- All the `code` required to get started
-- Images of what it should look like
-
 ### Clone
 
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
-
-### Setup
-
-- If you want more syntax highlighting, format your code like this:
+- Clone this repo to your local machine using `https://github.com/pavloskaralis/foodie`
 
 
+## Technologies used
+  - ReactJS
+  - MongoDB
+  - Express
+  - HTML
+  - CSS
+  - Javascript
+  - Heroku
 
-## Features
 ## Usage (Optional)
 ## Documentation (Optional)
 ## Tests (Optional)
@@ -94,7 +59,7 @@ The Foodie app allows users to create shopping lists tied to a user account. Lis
 
 | <a href="http://fvcproductions.com" target="_blank">Brendan Ryan</a> | <a href="http://fvcproductions.com" target="_blank">Anna Filatrova</a> | <a href="http://fvcproductions.com" target="_blank">Pavlos Karalis</a> |
 | :---: |:---:| :---:|
-| [![Brendan Ryan](https://git.generalassemb.ly/3rendan.png?s=200)](http://brendanryan.space)    | [![]()](http://fvcproductions.com) | [![Pavlos Karalis](https://github.com/pavloskaralis.png?s=200)](http://fvcproductions.com)  |
+| [![Brendan Ryan](https://git.generalassemb.ly/3rendan.png?s=200)](http://brendanryan.space)    | [![]()](http://fvcproductions.com) | [![Pavlos Karalis](https://github.com/pavloskaralis.png?s=200)](URL)  |
 | <a href="http://github.com/3rendan" target="_blank">`github.com/3rendan`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/pavloskaralis`</a> |
 
 - You can just grab their GitHub profile image URL
@@ -113,9 +78,6 @@ The Foodie app allows users to create shopping lists tied to a user account. Lis
 ## Support
 
 Reach out to us through GitHub!
-
-
-
 
 ---
 
