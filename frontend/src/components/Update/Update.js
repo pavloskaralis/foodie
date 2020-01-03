@@ -73,6 +73,7 @@ class Update extends Component {
         }
     }
 
+    //put or delete route  (conditional)
     deleteList = (e) => {
         e.preventDefault();
         const list = {

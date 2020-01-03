@@ -27,84 +27,67 @@ class Show extends Component {
 
     //put route
     toggleCross = (index) => {
-        const target = this.findID();
-        const baseURL = `http://localhost:3001/list/id/${target}`;
-        const updatedState = {
-          ...this.state
+        const updatedItem = {
+            name: this.state.items[index].name,
+            quantity: this.state.items[index].quantity,
+            crossed: !this.state.items[index].crossed
         }
-        updatedState.items[index].crossed = !updatedState.items[index].crossed;
-        this.setState({items: updatedState.items})//inside .then, send updatedState back
-        axios.put(`${baseURL}`, this.state)
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        const updatedItems = [
+            ...this.state.items.slice(0, index), 
+            updatedItem, 
+            ...this.state.items.slice(index + 1)
+        ];
+        axios.put('http://localhost:3001/list/id/' + this.findID(), {...this.state, items: updatedItems})
+        .then(response => this.setState({items:response.data.items}));
     }
 
+    //put route
     deleteItem = (index) => {
-        const target = this.findID();
-        const baseURL = `http://localhost:3001/list/id/${target}`;        
-        const updatedState = {
-            items: [
-                ...this.state.items.slice(0, index),
-                ...this.state.items.slice(index + 1)
-            ]
-        }
-        axios.put(`${baseURL}`, updatedState)
-        .then(data => {
-            window.location.reload(true)
-        })
-        // if(this.state.items === 0){
-        //     axios.delete(`${baseURL}`)
-        //     .then(()=>{
-        //         window.location.assign('/shopping-lists')
-        //     })
-        // }
-            //use the index to target the specific item in the model's item array
-            // this.findID() will retrieve the model's id for you
-            // make it so only the item is removed from the model's item array
-            // on the backend you will be dealing with a lot of nesting so make sure to review mongoose notes
-        }
-
-        render () {
-            return (
-                <div>
-                    <div>
-                        <div className='header1'>{this.state.title}</div>
-                        <div className='description'>
-                            You can manage your list here. <br/>
-                            If you want to cross out an item use <span>✓</span> <br/>
-                            If you need to delete an item use <span>x</span>
-                        </div>
-                    </div>
-    
-                    <div className='back'>
-                        {this.state.items.map((item, index) => {
-                            return (
-                                <div className= 'container3' key={index}>
-                                    <div className={item.crossed ? "strike" : ""}>{item.name} — {item.quantity}</div>
-                                    <div className='complete' onClick={()=> this.toggleCross(index)}>√</div>
-                                    <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>  
-                                </div>
-                            )
-                        })}
-                    </div>
-    
-                    <div className='header1'>
-                        Return To ...
-                    </div>
-                    <div className='container4'>
-                        <a className='return' href={"/share-list/" + this.findID()}>Share Shopping List</a>
-                        <a className='return' href={"/update-list/" + this.findID()}>Update Shopping List</a>
-                        <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
-                    </div>
-    
-                </div>
-            )
-        }
+        const updatedItems = [
+            ...this.state.items.slice(0,index), 
+            ...this.state.items.slice(index + 1)
+        ];
+        axios.put('http://localhost:3001/list/id/' + this.findID(), {...this.state,items: updatedItems})
+        .then(response => this.setState({items:response.data.items}));
     }
+
+    render () {
+        return (
+            <div>
+                <div>
+                    <div className='header1'>{this.state.title}</div>
+                    <div className='description'>
+                        You can manage your list here. <br/>
+                        If you want to cross out an item use <span>✓</span> <br/>
+                        If you need to delete an item use <span>x</span>
+                    </div>
+                </div>
+
+                <div className='back'>
+                    {this.state.items.map((item, index) => {
+                        return (
+                            <div className= 'container3' key={index}>
+                                <div className={item.crossed ? "strike" : ""}>{item.name} — {item.quantity}</div>
+                                <div className='complete' onClick={()=> this.toggleCross(index)}>√</div>
+                                <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>  
+                            </div>
+                        )
+                    })}
+                </div>
+
+                <div className='header1'>
+                    Return To ...
+                </div>
+                <div className='container4'>
+                    <a className='return' href={"/share-list/" + this.findID()}>Share Shopping List</a>
+                    <a className='return' href={"/update-list/" + this.findID()}>Update Shopping List</a>
+                    <a className='return' href="/shopping-lists/">Back To Shopping Lists</a>
+                </div>
+
+            </div>
+        )
+    }
+}
     
 
 export default Show
