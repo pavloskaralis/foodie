@@ -116,15 +116,9 @@ class Update extends Component {
                     {rows}
                     <div onClick={this.addInput}>+</div>
                     <div>
-<<<<<<< HEAD
-                        <button type="submit">Submit Changes</button>
-                        <button onClick={this.deleteList}>Delete List!!!</button>
-                    </div>
-=======
                         <button className='button1' type="submit">Submit Changes</button>
                         <button className='button2' onClick={this.deleteList}>Delete List!!!</button>
                     </div>     
->>>>>>> fbba646cae2d5fd6e4384e7e9ca4fac91ae34360
                 </form>
 
                 <div>
