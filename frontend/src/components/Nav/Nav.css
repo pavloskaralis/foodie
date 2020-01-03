@@ -1,11 +1,5 @@
 
-.avocado {
-   width: 150px; 
-   
-}
-.containerNav.avocado{
-    align-self: start;
-}
+
 .containerNav{
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
@@ -15,6 +9,10 @@
     border-bottom: gray .5px solid;
     padding-bottom: 10px;
 }
+.avocado {
+    width: 150px; 
+    justify-self: start;
+ }
 .links{
     color: var(--green);
     font-family: 'Didact Gothic', sans-serif;
