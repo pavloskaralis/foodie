@@ -13,18 +13,16 @@ class Update extends Component {
 
     componentDidMount = () => {
         axios.get('http://localhost:3001/list/id/' + this.findID())
-        .then(response => this.setState({
-            title: response.data.title,
-            users: response.data.users,
-            items: response.data.items,
-        })).then(() => {
-            const rows = this.state.items.length;
+        .then(response => {
             const state = {
-                rows: rows
+                title: response.data.title,
+                users: response.data.users,
+                items: response.data.items,
+                rows: response.data.items.length
             }
-            for(let i = 1; i <= rows; i ++){
-                state['name' + i] = this.state.items[i - 1].name;
-                state['quantity' + i] = this.state.items[i - 1].quantity;
+            for(let i = 1; i <= state.rows; i ++){
+                state['item' + i] = state.items[i - 1].name;
+                state['quantity' + i] = state.items[i - 1].quantity;
             }
             this.setState(state)
         })
@@ -100,7 +98,7 @@ class Update extends Component {
         for(let i = 1; i <= this.state.rows; i ++){
             rows.push(
                 <div key={i}>
-                    <input type="text" onChange={this.handleInput} value={this.state["name" + i]} placeholder="item name" id={"item" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state["item" + i]} placeholder="item name" id={"item" + i} />
                     <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quantity" + i} />
                 </div>
             )
