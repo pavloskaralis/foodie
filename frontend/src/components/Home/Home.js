@@ -42,36 +42,21 @@ class Home extends Component {
             </div>
 
             <div>
-<<<<<<< HEAD
-                <div className='callToAction'>Grocerie Shopping Made Easy</div>
-                <div className='paragraph'>
-                    Forget about paper lists. Introducing Foodie an app that makes grocerie shopping convenient and easy.
-                </div>
-                <div className='paragraph'>
-=======
                 <div className='title'>Shopping Made Easy</div>
                 
                 <div className='description'>
                     Forget about paper lists. Introducing Foodie an app that makes shopping convenient and easy.
                 </div>
                 <div className='description '>
->>>>>>> fbba646cae2d5fd6e4384e7e9ca4fac91ae34360
                     Foodie allows you to create, name, and share your shopping list with family and friends for any occasion.
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <div className= 'container'>
-                <div>
-                    <div alt="icon">
-                        <img className='birthday' src='https://img.icons8.com/dotty/2x/birthday.png'></img>
-=======
             <div className= 'container-fluid'>
             <div className='row'> 
                 <div className="col-xs-6 col-sm-4">
                     <div alt="icon">
                         <img className='birthday' src='https://i.imgur.com/7AffIid.png'></img>
->>>>>>> fbba646cae2d5fd6e4384e7e9ca4fac91ae34360
                     </div>
                     <div className='info'>
                         Create shopping lists for any occasion. No matter what it is we've got you covered!
@@ -79,33 +64,19 @@ class Home extends Component {
                 </div>
                 <div className="col-xs-6 col-sm-4">
                     <div alt="icon">
-<<<<<<< HEAD
-                        <img className='apple' src='https://img.icons8.com/carbon-copy/2x/apple.png'></img>
-                    </div>
-                    <div className='info'>
-                        Find food items that you’re looking for using Foodies intiuitive search engine.
-=======
                         <img className='apple' src='https://i.imgur.com/jjobpii.png'></img>
                     </div>
                     <div className='info'>
                         We don't stop at food :) Build a custom shopping list that meets your shopping needs.
->>>>>>> fbba646cae2d5fd6e4384e7e9ca4fac91ae34360
                     </div>
                 </div>
                
                 <div className="col-xs-6 col-sm-4">
                     <div alt="icon">
-<<<<<<< HEAD
-                        <img className='share' src='https://img.icons8.com/dotty/2x/left-and-right-arrows.png'></img>
-                    </div>
-                    <div className='info'>
-                        Share your shopping list with your friends and family.
-=======
                         <img className='share' src='https://i.imgur.com/qDSeTtP.png'></img>
                     </div>
                     <div className='info'>
                         Make shopping easier. Share your shopping list with your friends and family. 
->>>>>>> fbba646cae2d5fd6e4384e7e9ca4fac91ae34360
                     </div>
                 </div>
                 </div>
@@ -119,11 +90,7 @@ class Home extends Component {
             </div>
           
             {!this.props.isLoggedIn && <form onSubmit={this.handleSignUp} id="signup">
-<<<<<<< HEAD
-                <div className = 'registration'>Register Account For Free</div>
-=======
                 <div className = 'registration'>Create Free Account</div>
->>>>>>> fbba646cae2d5fd6e4384e7e9ca4fac91ae34360
                 <div className='form-group'>
                 <input type="text" className='form-control' value={this.state.username} onChange={this.handleInput} placeholder="username" id="username"/>
                 </div>

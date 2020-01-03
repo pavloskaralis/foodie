@@ -94,8 +94,8 @@ class Update extends Component {
         for(let i = 1; i <= this.state.rows; i ++){
             rows.push(
                 <div key={i}>
-                    <input type="text" onChange={this.handleInput} value={this.state.item} placeholder={this.state["name" + i]} id={"name" + i} />
-                    <input type="text" onChange={this.handleInput} value={this.state.quantity} placeholder={this.state["quantity" + i]} id={"quanity" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state["name" + i]} placeholder="item name" id={"item" + i} />
+                    <input type="text" onChange={this.handleInput} value={this.state["quantity" + i]} placeholder="quantity" id={"quantity" + i} />
                 </div>
             )
         }
@@ -107,7 +107,7 @@ class Update extends Component {
                     <div className='description'>
                         Update your list here. <br/>
                         Change the title, items, or quantity that needs to be bought. <br/>
-                        You can also add new items to your list.
+                        You can also add new items to your list. 
                     </div>
                 </div>
 
@@ -129,5 +129,6 @@ class Update extends Component {
         )
     }
 }
+
 
 export default Update
