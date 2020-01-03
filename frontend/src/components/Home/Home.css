@@ -15,11 +15,7 @@ body {
 div {
     text-align: center;
 }
-.description{
-    font-family: 'Didact Gothic', sans-serif;
-    padding: 50px; 
-    font-size: 21px;
-}
+
 .description2{
     font-family: 'Didact Gothic', sans-serif;
     padding: 50px; 
@@ -29,15 +25,15 @@ div {
     font-size: 30px;
     font-family: 'Bungee Inline', cursive;
     color:var(--red);
-    margin: 60px;
+    margin: 50px;
 }
 
-.container-fluid{
+.container{
     background-color: var(--green);
     display: grid;
     padding: 50px;
     width: auto;
-    margin:30px 0 30px 0;
+  
     max-width: 2000px;
    
     

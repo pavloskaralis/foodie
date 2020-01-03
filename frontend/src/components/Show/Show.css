@@ -1,6 +1,6 @@
 .container3{
     display: grid;
-    border-bottom: gray solid .5px;
+    border-bottom: white solid .5px;
     padding-bottom: 10px;
     grid-template-columns: 1.5fr .5fr .5fr;
     grid-template-rows: auto;
@@ -37,7 +37,7 @@
 }
 .return{
     padding: 10px;
-    color: gray;
+    color:var(--blue);
 }
 .return:hover{
     background-color: var(--red);

@@ -71,15 +71,14 @@ class Show extends Component {
         return (
             <div>
                 <div>
-                    <div className='header'>New Shopping List</div>
-                    <div className='description'>
+                    <div className='header1'>Create New List</div>
+                    <div className='descriptionCreate'>
                         Give your list a name and add items below. <br/>
                         If you run out of room just use <span>+</span> to add more lines.
                     </div>
                 </div>
 
                 <form onSubmit={this.handleSubmit}>
-                    
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div className='plus' onClick={this.addInput}>+</div>

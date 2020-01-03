@@ -56,7 +56,7 @@ class Show extends Component {
             <div>
                 <div>
                     <div className='header1'>{this.state.title}</div>
-                    <div className='description'>
+                    <div className='descriptionCreate'>
                         You can manage your list here. <br/>
                         If you want to cross out an item use <span>✓</span> <br/>
                         If you need to delete an item use <span>x</span>
@@ -76,7 +76,7 @@ class Show extends Component {
                 </div>
 
                 <div className='header1'>
-                    Return To ...
+                    Return To 
                 </div>
                 <div className='container4'>
                     <a className='return' href={"/share-list/" + this.findID()}>Share Shopping List</a>

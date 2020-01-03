@@ -108,20 +108,20 @@ class Update extends Component {
             <div>
                 <div>
                     <div className='header1'>Update List</div>
-                    <div className='description'>
+                    <div className='descriptionCreate'>
                         Update your list here. <br/>
                         Change the title, items, or quantity that needs to be bought. <br/>
                         You can also add new items to your list. 
                     </div>
                 </div>
 
-                <form onSubmit={this.handleUpdate}>
+                <form  onSubmit={this.handleUpdate}>
                     <input type="text" onChange={this.handleInput} value={this.state.title} placeholder="shopping list title" id="title"/>
                     {rows}
                     <div className="plus" onClick={this.addInput}>+</div>
                     <div>
                         <button className='button1' type="submit">Submit Changes</button>
-                        <button className='button2' onClick={this.deleteList}>Delete List!!!</button>
+                        <button className='button2' onClick={this.deleteList}>Delete List</button>
                     </div>     
                 </form>
 

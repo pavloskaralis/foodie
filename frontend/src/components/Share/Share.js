@@ -84,7 +84,7 @@ class Share extends Component {
                         Share your list with friends by adding their username. <br/>
                         This list is currently viewable by: <br/>
                         {shared}
-                    </div>
+                    </div> 
                 </div>
 
                 <form onSubmit={this.handleUpdate}>

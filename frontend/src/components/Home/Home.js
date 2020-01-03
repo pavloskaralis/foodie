@@ -35,10 +35,8 @@ class Home extends Component {
     render () {
         return (
             <div>
-            <div className='banner' alt="banner"></div>
-
             <div>
-                <img src='https://i.imgur.com/oSp3s1B.jpg' />
+                <img src='https://i.imgur.com/oSp3s1B.jpg' alt="banner"/>
             </div>
 
             <div>
@@ -47,24 +45,24 @@ class Home extends Component {
                 <div className='description'>
                     Forget about paper lists. Introducing Foodie an app that makes shopping convenient and easy.
                 </div>
-                <div className='description '>
+                <div className='description2'>
                     Foodie allows you to create, name, and share your shopping list with family and friends for any occasion.
                 </div>
             </div>
 
-            <div className= 'container-fluid'>
+            <div className= 'container'>
             <div className='row'> 
                 <div className="col-xs-6 col-sm-4">
-                    <div alt="icon">
-                        <img className='birthday' src='https://i.imgur.com/7AffIid.png'></img>
+                    <div>
+                        <img className='birthday' src='https://i.imgur.com/7AffIid.png' alt="icon"></img>
                     </div>
                     <div className='info'>
                         Create shopping lists for any occasion. No matter what it is we've got you covered!
                     </div>
                 </div>
                 <div className="col-xs-6 col-sm-4">
-                    <div alt="icon">
-                        <img className='apple' src='https://i.imgur.com/jjobpii.png'></img>
+                    <div>
+                        <img className='apple' src='https://i.imgur.com/jjobpii.png' alt="icon"></img>
                     </div>
                     <div className='info'>
                         We don't stop at food :) Build a custom shopping list that meets your shopping needs.
@@ -72,8 +70,8 @@ class Home extends Component {
                 </div>
                
                 <div className="col-xs-6 col-sm-4">
-                    <div alt="icon">
-                        <img className='share' src='https://i.imgur.com/qDSeTtP.png'></img>
+                    <div>
+                        <img className='share' src='https://i.imgur.com/qDSeTtP.png' alt="icon"></img>
                     </div>
                     <div className='info'>
                         Make shopping easier. Share your shopping list with your friends and family. 
