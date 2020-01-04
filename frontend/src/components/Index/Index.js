@@ -13,7 +13,7 @@ class Index extends Component {
     }
     
     componentDidMount = () => {
-        axios.get('http://localhost:3001/list/user/' + this.state.username)
+        axios.get('https://foodie-list-app-backend.herokuapp.com/list/user/' + this.state.username)
         .then(response => this.setState({lists: response.data.lists}));
     }
 
@@ -23,10 +23,14 @@ class Index extends Component {
                 
                 <div>
                     <div className='header1'>My Shopping Lists</div>
-                    <div className='description'>
-                        Here are all of your shopping lists. <br/>
-                        Click on the individual list to view, update, or share.
-                    </div>
+                    {this.state.lists.length > 0 ? 
+                        <div className='description'>
+                            Here are all of your shopping lists. <br/>
+                            Click on the individual list to view, update, or share.
+                        </div> :
+                        <div className='description'> 
+                            You haven't created any shopping lists yet.
+                        </div>}
                 </div>
 
                 <div className='container2'>
