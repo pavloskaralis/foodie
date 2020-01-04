@@ -58,7 +58,7 @@ class Show extends Component {
                     <div className='header1'>{this.state.title}</div>
                     <div className='descriptionCreate'>
                         You can manage your list here. <br/>
-                        If you want to cross out an item use <span>✓</span> <br/>
+                        If you want to check off an item use <span>✓</span> <br/>
                         If you need to delete an item use <span>x</span>
                     </div>
                 </div>
