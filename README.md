@@ -86,3 +86,16 @@ Reach out to us through GitHub!
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
+
+---
+
+## Frontend 
+
+The front end of this app takes advantage of the React framework and React Router Dom to build a dynamic single page website with multiple hrefs. The parent component App.js controls page permissions based on JWT authentication; if a user is authenticated, the index and other pages become accessible and render views unique to the specific authenticated user. Otherwise, only the home page is viewable until a visitor either signs up or logs in. In all, this app is built with 10 components, 7 of which represent specific hrefs/pages controlled through the switch router. 
+
+---
+
+## Backend 
+
+On the back end, the app utilizes Passport for its user authentication. When initialized, a get request is sent to the Express api server that retrieves the specific authenticated user's username. The site then uses this value in the index and other page components in order to retrieve all lists associated with the specified username. This is made possible by the fact that each list model has an array field that tracks all users with viewing access. A username can be added to this field via the share-list page. Summarily, an edit performed on a list by any of the users who have access to it will register the same for all shared accounts. A user can also remove themselves from the list's users array field via the update-list page's delete button. It is important to note that a list will not be deleted from the database unless its users array field is completely empty, as the method contains a conditional which initiates either a put or delete request.
+
