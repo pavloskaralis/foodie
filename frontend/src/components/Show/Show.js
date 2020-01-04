@@ -10,6 +10,7 @@ class Show extends Component {
     }
 
     componentDidMount = () => {
+        window.scrollTo(0, 0);
         axios.get('http://localhost:3001/list/id/' + this.findID())
         .then(response => this.setState({
             title: response.data.title,
