@@ -24,11 +24,17 @@ The Foodie app allows users to create shopping lists tied to a user account. Lis
   - Javascript
   - Heroku
 
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
+## Screenshots
+| Landing Page | Update List | Edit List |
+| :---: |:---:| :---:|
+| ![Landing Page](https://raw.git.generalassemb.ly/3rendan/hfb/master/home-page.png?s=50) | ![Edit Lists](https://raw.git.generalassemb.ly/3rendan/hfb/master/edit-list.png?s=200) | ![Landing Page](https://raw.git.generalassemb.ly/3rendan/hfb/master/update-lists2.png) |
+| Share List | Create User | My Lists
+| ![Share List](https://raw.git.generalassemb.ly/3rendan/hfb/master/share-lists.png?s=50) | ![Create List](https://raw.git.generalassemb.ly/3rendan/hfb/master/create-list.png?s=200) | ![My Lists](https://raw.git.generalassemb.ly/3rendan/hfb/master/my-lists.png) |
 
-- Going into more detail on code and technologies used
+
+
+## Resources
+
 - I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
 
 ---
@@ -43,7 +49,7 @@ The Foodie app allows users to create shopping lists tied to a user account. Lis
     - 🍴 Fork this repo!
 
 - **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
+    - 👯 Clone this repo to your local machine using `https://github.com/pavloskaralis/foodie.git`
 
 ### Step 2
 
@@ -51,19 +57,17 @@ The Foodie app allows users to create shopping lists tied to a user account. Lis
 
 ### Step 3
 
-- 🔃 Create a new pull request using <a href="https://github.com/joanaz/HireDot2/compare/" target="_blank">`https://github.com/joanaz/HireDot2/compare/`</a>.
+- 🔃 Create a new pull request using <a href="https://github.com/pavloskaralis/foodie/compare/" target="_blank">`https://github.com/joanaz/HireDot2/compare/`</a>.
 
 ---
 
 ## People
 
-| <a href="http://fvcproductions.com" target="_blank">Brendan Ryan</a> | <a href="http://fvcproductions.com" target="_blank">Anna Filatrova</a> | <a href="http://fvcproductions.com" target="_blank">Pavlos Karalis</a> |
+| Brendan Ryan | Anna Filatrova | Pavlos Karalis |
 | :---: |:---:| :---:|
-| [![Brendan Ryan](https://git.generalassemb.ly/3rendan.png?s=200)](http://brendanryan.space)    | [![]()](http://fvcproductions.com) | [![Pavlos Karalis](https://github.com/pavloskaralis.png?s=200)](URL)  |
+| [![Brendan Ryan](https://git.generalassemb.ly/3rendan.png?s=200)](http://brendanryan.space)    | [![Anna Filatrova](https://git.generalassemb.ly/1anya1.png?s=200)]() | [![Pavlos Karalis](https://github.com/pavloskaralis.png?s=200)](URL)  |
 | <a href="http://github.com/3rendan" target="_blank">`github.com/3rendan`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/pavloskaralis`</a> |
 
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
 
 ---
 
