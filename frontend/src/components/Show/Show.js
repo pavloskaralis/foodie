@@ -11,7 +11,7 @@ class Show extends Component {
 
     componentDidMount = () => {
         window.scrollTo(0, 0);
-        axios.get('http://localhost:3001/list/id/' + this.findID())
+        axios.get('https://foodie-list-app-backend.herokuapp.com/list/id/' + this.findID())
         .then(response => this.setState({
             title: response.data.title,
             users: response.data.users,
@@ -38,7 +38,7 @@ class Show extends Component {
             updatedItem, 
             ...this.state.items.slice(index + 1)
         ];
-        axios.put('http://localhost:3001/list/id/' + this.findID(), {...this.state, items: updatedItems})
+        axios.put('https://foodie-list-app-backend.herokuapp.com/list/id/' + this.findID(), {...this.state, items: updatedItems})
         .then(response => this.setState({items:response.data.items}));
     }
 
@@ -48,7 +48,7 @@ class Show extends Component {
             ...this.state.items.slice(0,index), 
             ...this.state.items.slice(index + 1)
         ];
-        axios.put('http://localhost:3001/list/id/' + this.findID(), {...this.state,items: updatedItems})
+        axios.put('https://foodie-list-app-backend.herokuapp.com/list/id/' + this.findID(), {...this.state,items: updatedItems})
         .then(response => this.setState({items:response.data.items}));
     }
 
@@ -60,7 +60,7 @@ class Show extends Component {
                     <div className='descriptionCreate'>
                         You can manage your list here. <br/>
                         If you want to check off an item use <span>✓</span> <br/>
-                        If you need to delete an item use <span>x</span>
+                        If you need to delete an item use <span>X</span>
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@ class Show extends Component {
                     {this.state.items.map((item, index) => {
                         return (
                             <div className= 'container3' key={index}>
-                                <div className={item.crossed ? "strike" : ""}>{item.name} — {item.quantity}</div>
+                                <div className={item.crossed ? "strike" : ""}>{item.name} — {item.quantity} {item.crossed && " (purchased)"}</div>
                                 <div className='complete' onClick={()=> this.toggleCross(index)}>✓</div>
                                 <div className='delete' onClick={()=> this.deleteItem(index)}>X</div>  
                             </div>
