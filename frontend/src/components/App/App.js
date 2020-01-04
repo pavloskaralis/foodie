@@ -13,7 +13,6 @@ import Update from '../Update/Update.js'
 import Share from '../Share/Share.js'
 import './App.css'
 
-//app will keep state and methods for login/signup/logout
 class App extends Component {
   state = {
     isLoggedIn: false,
