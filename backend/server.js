@@ -5,7 +5,7 @@ const passport = require('./config/passport')();
 
 //Environment 
 const app = express(); 
-const port = process.env.PORT || 3001; 
+const port = process.env.PORT || 8090; 
 
 //Middleware
 app.use(cors()); 
